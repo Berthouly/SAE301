@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Manif{% endblock %}
+
+{% block body %}
+    <h1>Create new Manif</h1>
+
+    {{ include('manif/_form.html.twig') }}
+
+    <a href="{{ path('app_manif_index') }}">back to list</a>
+{% endblock %}

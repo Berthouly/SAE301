@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ManifestationController!{% endblock %}
+
+{% block body %}
+<body>
+<header>
+<nav>
+   <a href="accueil">Accueil</a> ,
+        <a href="salle">Lieux</a> ,
+        <a href="manif">Manifestations</a> ,
+        <a href="panier">Panier:<span id='panier'>0</span></a> ,
+        <a href="login">Connexion</a> ,
+        <a href="admin">Administration</a> , 
+        </nav>
+        </header>
+<h1>Manifestation</h1>
+<br>
+<span id="article">Revoir Lascaux</span> - <span id="prix">4</span>€ 
+x<input type="number" value="1" min="1" max="99" id="qte">
+<input type="hidden" id="id" value="101">
+<button id="ajout">ajouter au panier</button>
+</body>
+    <script type="text/javascript" src="{{ asset('js/scriptpagearticles.js') }}"></script>
+
+{% endblock %}

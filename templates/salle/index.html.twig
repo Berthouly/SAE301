@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Salle index{% endblock %}
+
+{% block body %}
+<header>
+<nav>
+   <a href="../accueil">Accueil</a> ,
+        <a href="../salle">Lieux</a> ,
+        <a href="../manif">Manifestations</a> ,
+        <a href="../panier">Panier:<span id='panier'>0</span></a> ,
+        <a href="../login">Connexion</a> ,
+        <a href="../admin">Administration</a> , 
+        </nav>
+        </header>
+    <h1>Salle index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Capacite</th>
+                <th>Adresse_rue</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for salle in salles %}
+            <tr>
+                <td>{{ salle.nom }}</td>
+                <td>{{ salle.capacite }}</td>
+                <td>{{ salle.adresseRue }}</td>
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
