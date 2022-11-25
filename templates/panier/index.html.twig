@@ -3,24 +3,42 @@
 {% block title %}Hello PanierController!{% endblock %}
 
 {% block body %}
-<header>
+   <header>
 <nav>
-   <a href="accueil">Accueil</a> ,
-        <a href="salle">Lieux</a> ,
-        <a href="manif">Manifestations</a> ,
-        <a href="panier">Panier:<span id='panier'>0</span></a> ,
-        <a href="login">Connexion</a> ,
-        <a href="admin">Administration</a> , 
+<ul class="menu">
+        <li><a href="accueil">ACCUEIL</a></li> 
+        <li><a href="salle">SALLES</a></li> 
+        <li><a href="manif">MANIFESTATIONS</a></li> 
+        <li><a href="panier">PANIER:<span id='panier'>0</span></a></li> 
+        <li><a href="login">CONNEXION</a></li> 
+        <li><a href="admin">ADMIN</a></li> 
+        </ul>
         </nav>
         </header>
-<h1>Panier</h1>
-  <table>
+       
+       <div id="back_accueil">
+<div class="presentation">
+<h1 class="laylow">Népal - Concert</h1>
+<h1 class="trinity">Cheddar</h1>
+<h1 class="mardi">MARDI 20 DECEMBRE 2022</h1>
+<h1 class="bayonne">A BAYONNE</h1>
+</div>
+
+<form action="reponse_recherche.php" method="GET" data-parsley-validate class="nav_form">
+    <input type="search" id="real" placeholder="Recherche" list="manifestation" name="recherche_manifs" autocomplete="off" />
+    <input type="submit" id="bouton_recherche" value="Envoyer"> 
+</form>
+
+<section class="container_panier">
+<div class="panier">
+<h1 class="titre_panier">Panier</h1>
+  <table class="customers">
       <thead>
         <tr>
-          <th>article</th>
-          <th>quantite</th>
-          <th>prix unitaire</th>
-          <th>prix total</th>
+          <th>ARTICLES</th>
+          <th>QUANTITE</th>
+          <th>PRIX UNITAIRE</th>
+          <th>PRIX TOTAL</th>
         </tr>
       </thead>
       <tbody id="zone">
@@ -30,12 +48,14 @@
       </tbody>
       <tfoot><tr><td id="bas" colspan="3"></td><td><span id="total">...</span>€</td></tr></tfoot>
     </table>
-    <hr>
+    <br>
     <form action="finalisation.php" method="post">
     <input type="hidden" name="liste" id="liste">
-    <input type="submit" value="Valider ma commande.">
+    <input type="submit" value="VALIDER" class="valider">
   </form>
-    <hr>
+    </div>
+    </section>
     <script src="{{ asset('js/scriptpanier.js') }}"></script>
 </body>
+
 {% endblock %}

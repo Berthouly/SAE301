@@ -4,23 +4,92 @@
 
 {% block body %}
 <body>
-<header>
+
+
+   <header>
 <nav>
-   <a href="accueil">Accueil</a> ,
-        <a href="salle">Lieux</a> ,
-        <a href="manif">Manifestations</a> ,
-        <a href="panier">Panier:<span id='panier'>0</span></a> ,
-        <a href="login">Connexion</a> ,
-        <a href="admin">Administration</a> , 
+<ul class="menu">
+        <li><a href="accueil">ACCUEIL</a></li> 
+        <li><a href="salle">SALLES</a></li> 
+        <li><a href="manif">MANIFESTATIONS</a></li> 
+        <li><a href="panier">PANIER:<span id='panier'>0</span></a></li> 
+        <li><a href="login">CONNEXION</a></li> 
+        <li><a href="admin">ADMIN</a></li> 
+        </ul>
         </nav>
         </header>
-<h1>Manifestation</h1>
-<br>
-<span id="article">Revoir Lascaux</span> - <span id="prix">4</span>€ 
-x<input type="number" value="1" min="1" max="99" id="qte">
-<input type="hidden" id="id" value="101">
-<button id="ajout">ajouter au panier</button>
+       
+       <div id="back_accueil">
+<div class="presentation">
+<h1 class="laylow">Népal - Concert</h1>
+<h1 class="trinity">Cheddar</h1>
+<h1 class="mardi">MARDI 20 DECEMBRE 2022</h1>
+<h1 class="bayonne">A BAYONNE</h1>
+</div>
+
+<form action="reponse_recherche.php" method="GET" data-parsley-validate class="nav_form">
+    <input type="search" id="real" placeholder="Recherche" list="manifestation" name="recherche_manifs" autocomplete="off" />
+    <input type="submit" id="bouton_recherche" value="Envoyer"> 
+</form>
+
+<section class="affiche_detail">
+     
+ <img src="{{ asset('img/affiche.jpg') }}" id="titanic" alt="titanic">
+ <div class="info_detail">
+    <div class="titre_info">
+<h1>Mercredi 28 Décembre 2022 - 19h30</h1>
+<div id="barre"></div>
+<h1>La Folle Traversée</h1>
+</div>
+<p class="info">Le dimanche 14 avril 1912, par une nuit sans lune, un paquebot, surnommé « le vaisseau des rêves », poursuit son voyage inaugural. Si certains cherchent un mariage pour sauver leur rang, d’autres sont en quête d’aventures ou d’affaires, ou encore tout simplement d’une vie meilleure.</p>
+</div>
+
+<table class="customers">
+    <thead>
+        <tr>
+            <th>TYPE</th>
+            <th>ARTICLES</th>
+            <th>MONTANT</th>
+            <th>NOMBRES PLACES</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>TOUT PUBLIC</td>
+                        <td><span id="article">La Folle Traversée</span></td>
+            <td> <span id="prix">27</span>€ </td>
+            <td><input type="number" value="1" min="1" max="99" id="qte">
+            <input type="hidden" id="id" value="101">
+            <button id="ajout">AJOUTER PANIER</button></td>
+        </tr>
+
+                <tr>
+            <td>JEUNE 12-25 ANS</td>
+            <td><span id="article">La Folle Traversée</span></td>
+            <td> <span id="prix">18</span>€ </td>
+            <td><input type="number" value="1" min="1" max="99" id="qte">
+            <input type="hidden" id="id" value="101">
+            <button id="ajout">AJOUTER PANIER</button></td>
+        </tr>
+
+               <tr>
+            <td>REDUIT</td>
+            <td><span id="article">La Folle Traversée</span></td>
+            <td> <span id="prix">20</span>€ </td>
+            <td><input type="number" value="1" min="1" max="99" id="qte">
+            <input type="hidden" id="id" value="101">
+            <button id="ajout">AJOUTER PANIER</button></td>
+        </tr>
+        
+        
+    </tbody>
+</table>
+</div>
+</section>
+
+
 </body>
     <script type="text/javascript" src="{{ asset('js/scriptpagearticles.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/scriptgeneral.js') }}"></script>
 
 {% endblock %}

@@ -3,34 +3,67 @@
 {% block title %}Salle index{% endblock %}
 
 {% block body %}
-<header>
+<head>
+<link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
+</head>
+<body>
+   <header>
 <nav>
-   <a href="../accueil">Accueil</a> ,
-        <a href="../salle">Lieux</a> ,
-        <a href="../manif">Manifestations</a> ,
-        <a href="../panier">Panier:<span id='panier'>0</span></a> ,
-        <a href="../login">Connexion</a> ,
-        <a href="../admin">Administration</a> , 
+<ul class="menu">
+        <li><a href="../accueil">ACCUEIL</a></li> 
+        <li><a href="../salle">SALLES</a></li> 
+        <li><a href="../manif">MANIFESTATIONS</a></li> 
+        <li><a href="../panier">PANIER:<span id='panier'>0</span></a></li> 
+        <li><a href="../login">CONNEXION</a></li> 
+        <li><a href="../admin">ADMIN</a></li> 
+        </ul>
         </nav>
         </header>
-    <h1>Salle index</h1>
+       
+       <div id="back_accueil">
+<div class="presentation">
+<h1 class="laylow">Népal - Concert</h1>
+<h1 class="trinity">Cheddar</h1>
+<h1 class="mardi">MARDI 20 DECEMBRE 2022</h1>
+<h1 class="bayonne">A BAYONNE</h1>
+</div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Capacite</th>
-                <th>Adresse_rue</th>
-            </tr>
-        </thead>
-        <tbody>
+<form action="reponse_recherche.php" method="GET" data-parsley-validate class="nav_form">
+    <input type="search" id="real" placeholder="Recherche" list="manifestation" name="recherche_manifs" autocomplete="off" />
+    <input type="submit" id="bouton_recherche" value="Envoyer"> 
+</form>
+<section class="container_panier">
+<div class="table_salle">
+<div class="limiter">
+<div class="container-table100">
+<div class="wrap-table100">
+<div class="table">
+<div class="row header">
+<div class="cell">
+                NOM
+                </div>
+<div class="cell">
+                CAPACITE
+                </div>
+<div class="cell">
+                ADRESSE
+</div>
+</div>
+     
         {% for salle in salles %}
-            <tr>
-                <td>{{ salle.nom }}</td>
-                <td>{{ salle.capacite }}</td>
-                <td>{{ salle.adresseRue }}</td>
+            <div class="row">
+<div class="cell" data-title="Full Name">
+                {{ salle.nom }}
+                </div>
+<div class="cell" data-title="Age">
+                {{ salle.capacite }}
+                </div>
+<div class="cell" data-title="Job Title">
+                {{ salle.adresseRue }}
+                </div>
+</div>
 
-            </tr>
+           
         {% else %}
             <tr>
                 <td colspan="5">no records found</td>
@@ -38,5 +71,8 @@
         {% endfor %}
         </tbody>
     </table>
+    </div>
+    </section>
+    </body>
 
 {% endblock %}

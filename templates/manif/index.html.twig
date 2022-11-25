@@ -3,19 +3,35 @@
 {% block title %}Manif index{% endblock %}
 
 {% block body %}
-<header>
+<body>
+   <header>
 <nav>
-   <a href="../accueil">Accueil</a> ,
-        <a href="../salle">Lieux</a> ,
-        <a href="../manif">Manifestations</a> ,
-        <a href="../panier">Panier:<span id='panier'>0</span></a> ,
-        <a href="../login">Connexion</a> ,
-        <a href="../admin">Administration</a> , 
+<ul class="menu">
+        <li><a href="../accueil">ACCUEIL</a></li> 
+        <li><a href="../salle">SALLES</a></li> 
+        <li><a href="../manif">MANIFESTATIONS</a></li> 
+        <li><a href="../panier">PANIER:<span id='panier'>0</span></a></li> 
+        <li><a href="../login">CONNEXION</a></li> 
+        <li><a href="../admin">ADMIN</a></li> 
+        </ul>
         </nav>
         </header>
-    <h1>Manif index</h1>
+       
+       <div id="back_accueil">
+<div class="presentation">
+<h1 class="laylow">Népal - Concert</h1>
+<h1 class="trinity">Cheddar</h1>
+<h1 class="mardi">MARDI 20 DECEMBRE 2022</h1>
+<h1 class="bayonne">A BAYONNE</h1>
+</div>
 
-    <table class="table">
+<form action="reponse_recherche.php" method="GET" data-parsley-validate class="nav_form">
+    <input type="search" id="real" placeholder="Recherche" list="manifestation" name="recherche_manifs" autocomplete="off" />
+    <input type="submit" id="bouton_recherche" value="Envoyer"> 
+</form>
+<section class="container_panier">
+<div class="table_salle">
+    <table class="customers">
         <thead>
             <tr>
                 <th>Genre</th>
@@ -25,6 +41,7 @@
                 <th>Prix</th>
                 <th>Date</th>
                 <th>Horaire</th>
+                <th>Réserver</th>
             </tr>
         </thead>
         <tbody>
@@ -37,7 +54,7 @@
                 <td>{{ manif.prix }}</td>
                 <td>{{ manif.date }}</td>
                 <td>{{ manif.horaire }}</td>
-                <td><a href="../manifestation">Réserver</a></td>
+                <td><a href="../manifestation" id="reserver">Réserver</a></td>
 
 
             </tr>
@@ -48,5 +65,7 @@
         {% endfor %}
         </tbody>
     </table>
-
+    </div>
+    </section>
+</body>
 {% endblock %}
