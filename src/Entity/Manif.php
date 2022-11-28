@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\ManifRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ManifRepository::class)]
@@ -38,14 +36,6 @@ class Manif
 
     #[ORM\Column(length: 255)]
     private ?string $horaire = null;
-
-    #[ORM\OneToMany(mappedBy: 'category', targetEntity: ManifSalle::class)]
-    private Collection $manifSalles;
-
-    public function __construct()
-    {
-        $this->manifSalles = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -144,38 +134,6 @@ class Manif
     public function setHoraire(string $horaire): self
     {
         $this->horaire = $horaire;
-
-        return $this;
-    }
-
-   
-
-    /**
-     * @return Collection<int, ManifSalle>
-     */
-    public function getManifSalles(): Collection
-    {
-        return $this->manifSalles;
-    }
-
-    public function addManifSalle(ManifSalle $manifSalle): self
-    {
-        if (!$this->manifSalles->contains($manifSalle)) {
-            $this->manifSalles->add($manifSalle);
-            $manifSalle->setCategory($this);
-        }
-
-        return $this;
-    }
-
-    public function removeManifSalle(ManifSalle $manifSalle): self
-    {
-        if ($this->manifSalles->removeElement($manifSalle)) {
-            // set the owning side to null (unless already changed)
-            if ($manifSalle->getCategory() === $this) {
-                $manifSalle->setCategory(null);
-            }
-        }
 
         return $this;
     }
