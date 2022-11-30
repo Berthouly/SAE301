@@ -3,7 +3,7 @@
 {% block title %}MANIFESTATIONS{% endblock %}
 
 {% block body %}
-<body>
+    {% block content %}
 <section class="container_panier">
 <div class="table_salle">
     <table class="customers">
@@ -29,7 +29,7 @@
                 <td>{{ manif.prix }}</td>
                 <td>{{ manif.date }}</td>
                 <td>{{ manif.horaire }}</td>
-                <td><a href="{{manif.id}}" id="reserver">Réserver</a></td>
+                <td><a href="{{manif.id}}" id="reserver">Voir Info</a></td>
 
 
             </tr>
@@ -42,5 +42,5 @@
     </table>
     </div>
     </section>
-</body>
+{% endblock %}
 {% endblock %}

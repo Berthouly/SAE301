@@ -2,12 +2,13 @@
 
 {% block title %}Salle index{% endblock %}
 
-{% block body %}
+
 <head>
 <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
 </head>
-<body>
+{% block body %}
 
+{% block content %}
 <section class="container_panier">
 <div class="table_salle">
 <div class="limiter">
@@ -48,7 +49,8 @@
         </tbody>
     </table>
     </div>
-    </section>
-    </body>
+</section>
+
+{% endblock %}
 
 {% endblock %}

@@ -3,6 +3,7 @@
 {% block title %}Hello AccueilController!{% endblock %}
 
 {% block body %}
+{% block content %}
 
 <section class="theatre">
 <h1 class="titre_theatre">THEATRES</h1>
@@ -10,8 +11,8 @@
 <div class="titanic_flex">
 <div class="titanic1">
 <img src="{{ asset('img/titanic.png') }}" class="titanic_img">
-<a href="manifestation">
-<input type="submit" value="RESERVER" class="bouton_titanic">
+<a href="#">
+<input type="submit" value="Voir Info" class="bouton_titanic">
 </a>
 </div>
 <p class="text_theatre">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra posuere elit at ullamcorper. Aenean sit amet neque et urna finibus facilisis eget at velit. Curabitur imperdiet risus ullamcorper odio luctus, condimentum mattis tortor iaculis. Donec felis lectus, rutrum id eros eu, eleifend dignissim elit. Integer pellentesque eget orci a egestas. In placerat malesuada tempus. Etiam porttitor metus a arcu rhoncus, vitae imperdiet justo egestas.
@@ -34,8 +35,8 @@ Nam lectus dolor, malesuada et rhoncus et, aliquam id erat. In hac habitasse pla
 
 <div class="concert_img">
 <img src="{{ asset('img/titanic.png') }}" class="titanic_img">
-<a href="manifestation">
-<input type="submit" value="RESERVER" class="bouton_titanic">
+<a href="#">
+<input type="submit" value="Voir Info" class="bouton_titanic">
 </a>
 </div>
 </div>
@@ -47,8 +48,8 @@ Nam lectus dolor, malesuada et rhoncus et, aliquam id erat. In hac habitasse pla
 <div class="titanic_flex">
 <div class="titanic1">
 <img src="{{ asset('img/titanic.png') }}" class="titanic_img">
-<a href="manifestation">
-<input type="submit" value="RESERVER" class="bouton_titanic">
+<a href="#">
+<input type="submit" value="Voir Info" class="bouton_titanic">
 </a>
 </div>
 <p class="text_theatre">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra posuere elit at ullamcorper. Aenean sit amet neque et urna finibus facilisis eget at velit. Curabitur imperdiet risus ullamcorper odio luctus, condimentum mattis tortor iaculis. Donec felis lectus, rutrum id eros eu, eleifend dignissim elit. Integer pellentesque eget orci a egestas. In placerat malesuada tempus. Etiam porttitor metus a arcu rhoncus, vitae imperdiet justo egestas.
@@ -70,8 +71,8 @@ Nam lectus dolor, malesuada et rhoncus et, aliquam id erat. In hac habitasse pla
 
 <div class="concert_img">
 <img src="{{ asset('img/titanic.png') }}" class="titanic_img">
-<a href="manifestation"
-<input type="submit" value="RESERVER" class="bouton_titanic">
+  <a href="#" id="reserver"></a>
+<input type="submit" value="Voir Info" class="bouton_titanic">
 </a>
 </div>
 </div>
@@ -122,5 +123,5 @@ Nam lectus dolor, malesuada et rhoncus et, aliquam id erat. In hac habitasse pla
 </footer>
 
 
-
+{% endblock %}
 {% endblock %}

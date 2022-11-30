@@ -3,9 +3,11 @@
 {% block title %}Hello ManifestationController!{% endblock %}
 
 {% block body %}
-<body>
+    {% block javascript %}
+    <script type="text/javascript" src="{{ asset('js/scriptpagearticles.js') }}" defer></script>
+{% endblock %}
 
-
+{% block content %}
 
 <section class="affiche_detail">
      
@@ -38,9 +40,9 @@
         <tr>
             <td>TOUT PUBLIC</td>
                         <td><span id="article">{{ manif.titre }}</span></td>
-            <td> <span id="prix">27</span>€ </td>
+            <td> <span id="prix">{{ manif.prix }}</span></td>
             <td><input type="number" value="1" min="1" max="99" id="qte">
-            <input type="hidden" id="id" value="101">
+            <input type="hidden" id="id" value="{{ manif.id }}">
             <button id="ajout">AJOUTER PANIER</button></td>
         </tr>
 
@@ -51,9 +53,8 @@
 </div>
 </section>
 
+{% endblock %}
 
-</body>
-    <script type="text/javascript" src="{{ asset('js/scriptpagearticles.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('js/scriptgeneral.js') }}"></script>
+
 
 {% endblock %}

@@ -3,6 +3,7 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
+    {% block content %}
 
 <section class="container_panier">
     <h1>Register</h1>
@@ -18,4 +19,5 @@
         <a href="{{ path('app_login') }}" class="btn btn-secondary">Me connecter</a>
     {{ form_end(registrationForm) }}
     </section>
+        {% endblock %}
 {% endblock %}
