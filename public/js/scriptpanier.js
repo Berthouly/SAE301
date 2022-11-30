@@ -1,8 +1,22 @@
 
 
-liste = document.cookie //recupere le cookie  sous forme de chaine de caractere 
-if (liste!="")montab = JSON.parse(liste) // transforme la chaine  en tableau JSON
-else montab =Array() // si il n'y a pas de tableau dans le cookie alors créer le tableau
+liste = recupCookie("panier")
+if (liste!="")montab = JSON.parse(liste)
+else montab =Array() //recupere le cookie  sous forme de chaine de caractere 
+// si il n'y a pas de tableau dans le cookie alors créer le tableau
+
+function recupCookie(nom){
+
+    if(document.cookie.length == 0)return null;
+
+   var cookies = document.cookie.split("; "); //separe chaque parametre contenu dans le cookie
+   cookies.forEach(element => { 
+       ligne=element.split("=");
+       if(ligne[0]===nom) sortie =ligne[1] 
+           else sortie=null;
+       })
+       return sortie
+}
 console.log(montab)
 
 document.getElementById('liste').value=JSON.stringify(montab); // sauver montab pour le formulaire
@@ -40,7 +54,7 @@ function clickplus(tag){
     id = this.parentNode.parentNode.id; // recupere l'id de l'article cliqué
     index = montab.findIndex(element => element.id ==id); //trouver l'article dans la liste du panier
     montab[index].quantite	= parseInt(montab[index].quantite) +1; //incrementer la quantité
-    document.cookie = JSON.stringify(montab); //sauvegarde des infos dans le cookies
+    document.cookie = "panier="+JSON.stringify(montab)+"; path=/"; //sauvegarde des infos dans le cookies
     document.getElementById('liste').value=JSON.stringify(montab); // sauver montab pour le formulaire
         
     totalgeneral += 1*prix

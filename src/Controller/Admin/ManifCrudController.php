@@ -32,7 +32,7 @@ class ManifCrudController extends AbstractCrudController
             TextField::new('prix'),
             TextField::new('date'),
             TextField::new('horaire'),
-            AssociationField::new('ManifSalles', 'ManifSalles')
+            AssociationField::new('Salle', 'ManifLieux')
         ];
     }
     

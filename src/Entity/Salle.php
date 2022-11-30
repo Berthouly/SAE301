@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Entity;
-
 use App\Repository\SalleRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
 use Doctrine\ORM\Mapping as ORM;
 
 
@@ -22,6 +24,16 @@ class Salle
 
     #[ORM\Column(length: 255)]
     private ?string $adresse_rue = null;
+
+    #[ORM\OneToMany(mappedBy: 'Salle', targetEntity: Manif::class)]
+    private Collection $manifs;
+
+    public function __construct()
+    {
+        $this->manifs = new ArrayCollection();
+    }
+
+
 
     public function getId(): ?int
     {
@@ -62,8 +74,43 @@ class Salle
         $this->adresse_rue = $adresse_rue;
 
         return $this;
+    }   
+
+
+    public function __toString(): string
+    {
+        return $this->nom;
     }
 
+    /**
+     * @return Collection<int, Manif>
+     */
+    public function getManifs(): Collection
+    {
+        return $this->manifs;
+    }
+
+    public function addManif(Manif $manif): self
+    {
+        if (!$this->manifs->contains($manif)) {
+            $this->manifs->add($manif);
+            $manif->setSalle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeManif(Manif $manif): self
+    {
+        if ($this->manifs->removeElement($manif)) {
+            // set the owning side to null (unless already changed)
+            if ($manif->getSalle() === $this) {
+                $manif->setSalle(null);
+            }
+        }
+
+        return $this;
+    } 
   
 
 }

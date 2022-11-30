@@ -1,34 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Manif index{% endblock %}
+{% block title %}MANIFESTATIONS{% endblock %}
 
 {% block body %}
 <body>
-   <header>
-<nav>
-<ul class="menu">
-        <li><a href="../accueil">ACCUEIL</a></li> 
-        <li><a href="../salle">SALLES</a></li> 
-        <li><a href="../manif">MANIFESTATIONS</a></li> 
-        <li><a href="../panier">PANIER:<span id='panier'>0</span></a></li> 
-        <li><a href="../login">CONNEXION</a></li> 
-        <li><a href="../admin">ADMIN</a></li> 
-        </ul>
-        </nav>
-        </header>
-       
-       <div id="back_accueil">
-<div class="presentation">
-<h1 class="laylow">Népal - Concert</h1>
-<h1 class="trinity">Cheddar</h1>
-<h1 class="mardi">MARDI 20 DECEMBRE 2022</h1>
-<h1 class="bayonne">A BAYONNE</h1>
-</div>
-
-<form action="reponse_recherche.php" method="GET" data-parsley-validate class="nav_form">
-    <input type="search" id="real" placeholder="Recherche" list="manifestation" name="recherche_manifs" autocomplete="off" />
-    <input type="submit" id="bouton_recherche" value="Envoyer"> 
-</form>
 <section class="container_panier">
 <div class="table_salle">
     <table class="customers">
@@ -54,7 +29,7 @@
                 <td>{{ manif.prix }}</td>
                 <td>{{ manif.date }}</td>
                 <td>{{ manif.horaire }}</td>
-                <td><a href="../manifestation" id="reserver">Réserver</a></td>
+                <td><a href="{{manif.id}}" id="reserver">Réserver</a></td>
 
 
             </tr>

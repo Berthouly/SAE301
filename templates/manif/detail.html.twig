@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ManifestationController!{% endblock %}
+
+{% block body %}
+<body>
+
+
+
+<section class="affiche_detail">
+     
+
+     <h1>{{ manif.genre }}</h1>
+    <h1>{{ manif.titre }}</h1>
+
+
+
+ <img src="{{ asset('img/affiche.jpg') }}" id="titanic" alt="titanic">
+ <div class="info_detail">
+    <div class="titre_info">
+<h1>Mercredi 28 Décembre 2022 - 19h30</h1>
+<div id="barre"></div>
+<h1>La Folle Traversée</h1>
+</div>
+<p class="info">Le dimanche 14 avril 1912, par une nuit sans lune, un paquebot, surnommé « le vaisseau des rêves », poursuit son voyage inaugural. Si certains cherchent un mariage pour sauver leur rang, d’autres sont en quête d’aventures ou d’affaires, ou encore tout simplement d’une vie meilleure.</p>
+</div>
+
+<table class="customers">
+    <thead>
+        <tr>
+            <th>TYPE</th>
+            <th>ARTICLES</th>
+            <th>MONTANT</th>
+            <th>NOMBRES PLACES</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>TOUT PUBLIC</td>
+                        <td><span id="article">{{ manif.titre }}</span></td>
+            <td> <span id="prix">27</span>€ </td>
+            <td><input type="number" value="1" min="1" max="99" id="qte">
+            <input type="hidden" id="id" value="101">
+            <button id="ajout">AJOUTER PANIER</button></td>
+        </tr>
+
+        
+        
+    </tbody>
+</table>
+</div>
+</section>
+
+
+</body>
+    <script type="text/javascript" src="{{ asset('js/scriptpagearticles.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/scriptgeneral.js') }}"></script>
+
+{% endblock %}

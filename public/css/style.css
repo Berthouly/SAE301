@@ -648,3 +648,14 @@ margin: auto;
     margin-top: 5%;
   }
   
+
+  /*LOGIN*/
+
+  .login_section{
+    height: 300px;
+  }
+
+  .login{
+    height: 350px;
+    background-color: rgb(180, 88, 88);
+  }

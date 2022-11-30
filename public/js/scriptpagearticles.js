@@ -20,6 +20,6 @@ document.getElementById('ajout').addEventListener('click',function() {
     document.getElementById('panier').innerHTML=panier; // affichage de la valeur du nouveau panier
     
 
-    document.cookie = JSON.stringify(montab);  // sauvegarde des infos dans le cookie "liste"
+    document.cookie = "panier="+JSON.stringify(montab)+"; path=/";  // sauvegarde des infos dans le cookie "liste"
 			    	
 })
