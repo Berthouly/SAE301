@@ -1,50 +1,84 @@
-{% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block head %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--=============== REMIXICONS ===============-->
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+        <!--=============== CSS ===============-->
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
+        <title>Login</title>
+{% endblock %}
+
+{% block javascript %}
+        <script type="text/javascript" src="{{ asset('js/main.js') }}" defer></script>
+{% endblock %}
+
 
 {% block body %}
 {% block content %}
+<main>
+        <div class="container">
+            <div class="login_content">
+                <img src="{{ asset('img/bg-login.png')}}" alt="login_img" class="login_img">
+                <form method="post" class="login_form" id="login-form">
 
-        <section class="login_section">
-<div class=login>
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+                    
+            {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+    
+        {% if app.user %}
+            <div class="mb-3">
+                Vous êtes connecté(e) comme {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Me déconnecter</a>
+            </div>
+        {% endif %}
+        
+                    <div>
+                        <h1 class="login_title">
+                            <span>Connectez</span>Vous
+                        </h1>
+                        <p class="login_description">
+                            Bonjour! Connectez vous pour continuer.
+                        </p>
+                    </div>
 
-    {% if app.user %}
-        <div class="mb-3">
-            Vous êtes connecté(e) comme {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Me déconnecter</a>
+                    <div>
+                        <div class="login_inputs">
+                            <div>
+                            <label for="inputEmail" class="login_label">Email</label>
+                            <input id="inputEmail" type="email" placeholder="Entrez votre Email"  class="login_input" value="{{ last_username }}" name="email" autofocus>
+                        </div>
+                        
+
+                        <div>
+                            <label for="inputPassword" {{ 'label.password'}} class="login_label">Mot de Passe</label>
+
+                        <div class="login_box">
+                            <input id="inputPassword" type="password" placeholder="Entrez votre Mot de Passe"  class="login_input" autocomplete="current-password">
+                            <i class="ri-eye-off-fill login_eye" id="input-icon"></i>
+                           </div>
+                           <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                        </div>
+                    </div>
+                            <div class="login_check">
+                               
+                            </div>
+                            </div>
+
+
+                            <div>
+                                <div class="login-buttons">
+                                    <button class="login_button">Se Connecter</button>
+                                    <a href="{{ path('app_accueil') }}"></a>
+                                    <button class="login_button login_button-ghost">S'inscrire</button>
+                                </div>
+                                <a href="#" class="login_forgot"></a>
+                            </div>
+                </form>
+            </div>
         </div>
-    {% endif %}
-
-    <h1 class="h3 mb-3 font-weight-normal">Me connecter</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Mot de passe</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
-
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
-    #}
-
-    <button class="btn btn-lg btn-primary" type="submit">
-        Connexion
-    </button>
-    <a href="{{ path('app_register') }}" class="btn btn-secondary">M'inscrire</a>
-</form>
-</div>
-</section>
+    </main>
     {% endblock %}
 {% endblock %}

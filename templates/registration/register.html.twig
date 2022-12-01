@@ -1,23 +1,73 @@
-{% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+
+
+{% block head %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--=============== REMIXICONS ===============-->
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+        <!--=============== CSS ===============-->
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
+        <title>Login</title>
+{% endblock %}
+
+
 
 {% block body %}
-    {% block content %}
+{% block content %}
+<main>
+        <div class="container_form">
+            <div class="login_content">
+                <img src="{{ asset('img/bg-login.png')}}" alt="login_img" class="login_img">
+                <div class="login_form" id="login-form">
+                    {{ form_start(registrationForm) }}
 
-<section class="container_panier">
-    <h1>Register</h1>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+                
+        
+                    <div>
+                        <h1 class="login_title">
+                            <span>Incrivez</span>Vous
+                        </h1>
+                        <p class="login_description">
+                            Bonjour! Inscivez vous pour continuer.
+                        </p>
+                    </div>
 
-        <button type="submit" class="btn">M'inscrire</button>
-        <a href="{{ path('app_login') }}" class="btn btn-secondary">Me connecter</a>
-    {{ form_end(registrationForm) }}
-    </section>
-        {% endblock %}
+                    <div>
+                        <div class="login_inputs">
+                            <div>
+                                    {{ form_row(registrationForm.email) }}
+
+                        </div>
+                        
+
+                        <div>
+
+                        <div class="login_box">
+                            {{ form_row(registrationForm.plainPassword, {
+                                label: 'Password'}) }}                           
+                            <i class="ri-key-fill login_eye"></i>
+                    </div>
+                            <div class="login_check">
+                             
+                                        {{ form_row(registrationForm.agreeTerms) }}
+
+                            </div>
+                            </div>
+
+
+                            <div>
+                                <div class="login-buttons">
+                                    <a href="{{ path('app_accueil') }}"></a>
+                                    <button class="login_button">Se Connecter</button>
+                                
+                   {{ form_end(registrationForm) }}
+                </div>
+            </div>
+        </div>
+    </main>
+    {% endblock %}
 {% endblock %}

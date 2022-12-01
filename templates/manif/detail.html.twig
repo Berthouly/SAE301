@@ -1,60 +1,78 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ManifestationController!{% endblock %}
+{% block title %}Detail Manif{% endblock %}
 
 {% block body %}
-    {% block javascript %}
-    <script type="text/javascript" src="{{ asset('js/scriptpagearticles.js') }}" defer></script>
-{% endblock %}
-
 {% block content %}
 
-<section class="affiche_detail">
-     
 
-     <h1>{{ manif.genre }}</h1>
-    <h1>{{ manif.titre }}</h1>
+<section class="section_detail">
+    <img src="{{ asset('img/') }}{{ manif.affiche }}" class="image_detail">
+    <div id="page_detail">
+    <h3 class="date_detail">{{ manif.date }}  -  {{ manif.horaire }}</h3>
+        <div id="barre"></div>
+    <h2 class="titre_detail">{{ manif.titre }}  -  <span class="genre_detail">{{ manif.genre }}</span></h2>
+    <h2 class="descript_detail">{{ manif.descript }}</h2>
+    </div>
 
-
-
- <img src="{{ asset('img/affiche.jpg') }}" id="titanic" alt="titanic">
- <div class="info_detail">
-    <div class="titre_info">
-<h1>Mercredi 28 Décembre 2022 - 19h30</h1>
-<div id="barre"></div>
-<h1>La Folle Traversée</h1>
-</div>
-<p class="info">Le dimanche 14 avril 1912, par une nuit sans lune, un paquebot, surnommé « le vaisseau des rêves », poursuit son voyage inaugural. Si certains cherchent un mariage pour sauver leur rang, d’autres sont en quête d’aventures ou d’affaires, ou encore tout simplement d’une vie meilleure.</p>
-</div>
 
 <table class="customers">
-    <thead>
-        <tr>
-            <th>TYPE</th>
-            <th>ARTICLES</th>
-            <th>MONTANT</th>
-            <th>NOMBRES PLACES</th>
-        </tr>
-    </thead>
+
     <tbody>
-        <tr>
-            <td>TOUT PUBLIC</td>
-                        <td><span id="article">{{ manif.titre }}</span></td>
-            <td> <span id="prix">{{ manif.prix }}</span></td>
+            <td class="reserver_titre">{{ manif.titre }}</td>
+            <td class="place_detail">Nb Place :</td>
+            <td> <span id="prix">{{ manif.prix }}€</span></td>
             <td><input type="number" value="1" min="1" max="99" id="qte">
             <input type="hidden" id="id" value="{{ manif.id }}">
-            <button id="ajout">AJOUTER PANIER</button></td>
-        </tr>
-
-        
-        
+            <button id="ajout">RÉSERVER</button></td>
     </tbody>
 </table>
-</div>
-</section>
+
+       </section>
+
+<footer class="footer">
+    <div class="footer__addr">
+        <h1 class="footer__logo">Le Pestacle</h1>
+        <h2>Contact</h2>
+        <address>
+            9 Rue Quebec, 10430 Rosières-prés-Troyes<br>
+            <a class="footer__btn" href="mailto:juleshemon63@gmail.com">Notre Mail</a>
+        </address>
+    </div>
+    <ul class="footer__nav">
+        <li class="nav__item">
+            <h2 class="nav__title">Genre</h2>
+            <ul class="nav__ul">
+                <li><a href="#">Théâtre</a></li>
+                <li><a href="#">Concert</a></li>
+                <li><a href="#">Cinéma</a></li>
+                <li><a href="#">Spectacle</a></li>
+            </ul>
+        </li>
+        <li class="nav__item nav__item--extra">
+            <h2 class="nav__title">Compte</h2>
+            <ul class="nav__ul">
+                <li><a href="#">Mot de passe oublié ?</a></li>
+                <li><a href="#">Connexion</a></li>
+            </ul>
+        </li>
+        <li class="nav__item">
+            <h2 class="nav__title">Aide</h2>
+            <ul class="nav__ul">
+                <li><a href="#">Comment réserver ?</a></li>
+                <li><a href="#">Comment se créer un compte ?</a></li>
+                <li><a href="#">FAQ</a></li>
+            </ul>
+        </li>
+        <li class="nav__item">
+            <h2 class="nav__title">Le Pestacle</h2>
+            <ul class="nav__ul">
+                <li><a href="#">A propos</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </li>
+    </ul>
+</footer>
 
 {% endblock %}
-
-
-
 {% endblock %}

@@ -1,46 +1,72 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}MANIFESTATIONS{% endblock %}
+{% block title %}Manif index{% endblock %}
 
 {% block body %}
-    {% block content %}
-<section class="container_panier">
-<div class="table_salle">
-    <table class="customers">
-        <thead>
-            <tr>
-                <th>Genre</th>
-                <th>Titre</th>
-                <th>Descript</th>
-                <th>Casting</th>
-                <th>Prix</th>
-                <th>Date</th>
-                <th>Horaire</th>
-                <th>Réserver</th>
-            </tr>
-        </thead>
-        <tbody>
+{% block content %}
+    </div>
+    <section class="section_manifs">
+    <div id="card_container">
         {% for manif in manifs %}
-            <tr>
-                <td>{{ manif.genre }}</td>
-                <td>{{ manif.titre }}</td>
-                <td>{{ manif.descript }}</td>
-                <td>{{ manif.casting }}</td>
-                <td>{{ manif.prix }}</td>
-                <td>{{ manif.date }}</td>
-                <td>{{ manif.horaire }}</td>
-                <td><a href="{{manif.id}}" id="reserver">Voir Info</a></td>
+                <div class="event_card">
+                    <div class="image_card"><img src="{{ asset('img/') }}{{ manif.affiche }}"></div>
+                    <div class="info_card">
+                        <p class="titre_card">{{ manif.titre }}</p>
+                        <p class="genre_card">{{ manif.genre }}</p>
+                        <p class="prix_card">{{ manif.prix }}€</p>
+                        <p><a class="lien_card" href="{{ manif.id }}">Voir Info</a></p>
+                    </div>
+                </div>
 
-
-            </tr>
         {% else %}
             <tr>
                 <td colspan="10">no records found</td>
             </tr>
         {% endfor %}
-        </tbody>
-    </table>
     </div>
     </section>
+
+    <footer class="footer">
+    <div class="footer__addr">
+        <h1 class="footer__logo">Le Pestacle</h1>
+        <h2>Contact</h2>
+        <address>
+            9 Rue Quebec, 10430 Rosières-prés-Troyes<br>
+            <a class="footer__btn" href="mailto:juleshemon63@gmail.com">Notre Mail</a>
+        </address>
+    </div>
+    <ul class="footer__nav">
+        <li class="nav__item">
+            <h2 class="nav__title">Genre</h2>
+            <ul class="nav__ul">
+                <li><a href="#">Théâtre</a></li>
+                <li><a href="#">Concert</a></li>
+                <li><a href="#">Cinéma</a></li>
+                <li><a href="#">Spectacle</a></li>
+            </ul>
+        </li>
+        <li class="nav__item nav__item--extra">
+            <h2 class="nav__title">Compte</h2>
+            <ul class="nav__ul">
+                <li><a href="#">Mot de passe oublié ?</a></li>
+                <li><a href="#">Connexion</a></li>
+            </ul>
+        </li>
+        <li class="nav__item">
+            <h2 class="nav__title">Aide</h2>
+            <ul class="nav__ul">
+                <li><a href="#">Comment réserver ?</a></li>
+                <li><a href="#">Comment se créer un compte ?</a></li>
+                <li><a href="#">FAQ</a></li>
+            </ul>
+        </li>
+        <li class="nav__item">
+            <h2 class="nav__title">Le Pestacle</h2>
+            <ul class="nav__ul">
+                <li><a href="#">A propos</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </li>
+    </ul>
+</footer>
 {% endblock %}
 {% endblock %}

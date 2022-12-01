@@ -7,7 +7,8 @@
         <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
 
-        {% block javascript %}<script type="text/javascript" src="{{ asset('js/scriptpagearticles.js') }}" defer></script>
+        {% block javascript %}
+        <script type="text/javascript" src="{{ asset('js/scriptpagearticles.js') }}" defer></script>
     <script type="text/javascript" src="{{ asset('js/scriptgeneral.js') }}" defer></script>
     {% endblock %}
     </head>
@@ -20,7 +21,7 @@
         <li><a href="{{ path('app_manif_index') }}">MANIFESTATIONS</a></li> 
         <li><a href="{{ path('app_panier') }}">PANIER:<span id='panier'>0</span></a></li> 
         {% if app.user %}
-        <li><a href="#">MON COMPTE</a></li>
+        <li><a href="{{ path('app_compte') }}">MON COMPTE</a></li>
         <li><a href="{{ path('app_logout') }}">DECONNEXION</a></li>
         {% else %}
         <li><a href="{{ path('app_login') }}">CONNEXION</a></li> 
@@ -33,13 +34,13 @@
         </header>
       <div id="back_accueil">
 <div class="presentation">
-<h1 class="laylow">Népal - Concert</h1>
+<h1>Népal - Concert</h1>
 <h1 class="trinity">Cheddar</h1>
-<h1 class="mardi">MARDI 20 DECEMBRE 2022</h1>
-<h1 class="bayonne">A BAYONNE</h1>
+<h1>MARDI 20 DECEMBRE 2022</h1>
+<h1>A BAYONNE</h1>
 </div>
 
-<form action="reponse_recherche.php" method="GET" data-parsley-validate class="nav_form">
+<form action="reponse_recherche.php" method="GET" data-parsley-validate class="nav_form" id="nav-form">
     <input type="search" id="real" placeholder="Recherche" list="manifestation" name="recherche_manifs" autocomplete="off" />
     <input type="submit" id="bouton_recherche" value="Envoyer"> 
 </form>

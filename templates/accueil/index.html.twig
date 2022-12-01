@@ -5,17 +5,16 @@
 {% block body %}
 {% block content %}
 
-<section class="theatre">
-<h1 class="titre_theatre">THEATRES</h1>
-<hr>
-<div class="titanic_flex">
-<div class="titanic1">
-<img src="{{ asset('img/titanic.png') }}" class="titanic_img">
-<a href="#">
-<input type="submit" value="Voir Info" class="bouton_titanic">
-</a>
-</div>
-<p class="text_theatre">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra posuere elit at ullamcorper. Aenean sit amet neque et urna finibus facilisis eget at velit. Curabitur imperdiet risus ullamcorper odio luctus, condimentum mattis tortor iaculis. Donec felis lectus, rutrum id eros eu, eleifend dignissim elit. Integer pellentesque eget orci a egestas. In placerat malesuada tempus. Etiam porttitor metus a arcu rhoncus, vitae imperdiet justo egestas.
+<!--Première section-->
+<section class="section_theatre">
+  <h1 class="titre_theatre">THEATRES</h1>
+  <div id="barre"></div>
+  <div class="titanic_flex">
+    <div class="titanic1">
+      <img src="{{ asset('img/titanic.png') }}" class="titanic_img">
+      <input type="submit" value="Voir Info" class="bouton_titanic">
+    </div>
+    <p class="text_theatre">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra posuere elit at ullamcorper. Aenean sit amet neque et urna finibus facilisis eget at velit. Curabitur imperdiet risus ullamcorper odio luctus, condimentum mattis tortor iaculis. Donec felis lectus, rutrum id eros eu, eleifend dignissim elit. Integer pellentesque eget orci a egestas. In placerat malesuada tempus. Etiam porttitor metus a arcu rhoncus, vitae imperdiet justo egestas.
 Donec porttitor mi at iaculis dictum.
 
 Nam lectus dolor, malesuada et rhoncus et, aliquam id erat. In hac habitasse platea dictumst. Ut dapibus fringilla vestibulum. Praesent euismod pharetra arcu sit amet fringilla. Sed lobortis commodo dapibus. Ut porttitor a tellus eu lacinia. Proin ut semper tortor. Cras ultricies hendrerit velit, id interdum nisi porttitor non. Ut augue turpis, vehicula et euismod in, euismod sit amet dolor.
@@ -23,9 +22,11 @@ Nam lectus dolor, malesuada et rhoncus et, aliquam id erat. In hac habitasse pla
 </div>
 <a href="manif" class="theatre_lien">Voir les autres pièces</a>
 </section>
-<section class="concert">
+
+<!--Deuxième section-->
+<section class="section_concert">
 <h1 class="titre_concert">Concerts</h1>
-<hr>
+  <div id="barre"></div>
 <div class="concert_flex">
 <p class="text_concert">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra posuere elit at ullamcorper. Aenean sit amet neque et urna finibus facilisis eget at velit. Curabitur imperdiet risus ullamcorper odio luctus, condimentum mattis tortor iaculis. Donec felis lectus, rutrum id eros eu, eleifend dignissim elit. Integer pellentesque eget orci a egestas. In placerat malesuada tempus. Etiam porttitor metus a arcu rhoncus, vitae imperdiet justo egestas.
 Donec porttitor mi at iaculis dictum.
@@ -35,22 +36,20 @@ Nam lectus dolor, malesuada et rhoncus et, aliquam id erat. In hac habitasse pla
 
 <div class="concert_img">
 <img src="{{ asset('img/titanic.png') }}" class="titanic_img">
-<a href="#">
 <input type="submit" value="Voir Info" class="bouton_titanic">
-</a>
 </div>
 </div>
 <a href="manif" class="concert_lien">Voir les autres pièces</a>
 </section>
-<section class="Cinema">
+
+<!--Troisème section*-->
+<section class="section_cinema">
 <h1 class="titre_theatre">CINEMA</h1>
-<hr>
+  <div id="barre"></div>
 <div class="titanic_flex">
 <div class="titanic1">
 <img src="{{ asset('img/titanic.png') }}" class="titanic_img">
-<a href="#">
 <input type="submit" value="Voir Info" class="bouton_titanic">
-</a>
 </div>
 <p class="text_theatre">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra posuere elit at ullamcorper. Aenean sit amet neque et urna finibus facilisis eget at velit. Curabitur imperdiet risus ullamcorper odio luctus, condimentum mattis tortor iaculis. Donec felis lectus, rutrum id eros eu, eleifend dignissim elit. Integer pellentesque eget orci a egestas. In placerat malesuada tempus. Etiam porttitor metus a arcu rhoncus, vitae imperdiet justo egestas.
 Donec porttitor mi at iaculis dictum.
@@ -59,9 +58,12 @@ Nam lectus dolor, malesuada et rhoncus et, aliquam id erat. In hac habitasse pla
 </p>
 </div>
 <a href="manif" class="theatre_lien">Voir les autres pièces</a>
-<section class="spectacle">
+</section>
+
+<!--Quatrième section-->
+  <section class="section_spectacle">
 <h1 class="titre_spectacle">Spectacle</h1>
-<hr>
+    <div id="barre"></div>
 <div class="concert_flex">
 <p class="text_concert">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra posuere elit at ullamcorper. Aenean sit amet neque et urna finibus facilisis eget at velit. Curabitur imperdiet risus ullamcorper odio luctus, condimentum mattis tortor iaculis. Donec felis lectus, rutrum id eros eu, eleifend dignissim elit. Integer pellentesque eget orci a egestas. In placerat malesuada tempus. Etiam porttitor metus a arcu rhoncus, vitae imperdiet justo egestas.
 Donec porttitor mi at iaculis dictum.
@@ -71,9 +73,7 @@ Nam lectus dolor, malesuada et rhoncus et, aliquam id erat. In hac habitasse pla
 
 <div class="concert_img">
 <img src="{{ asset('img/titanic.png') }}" class="titanic_img">
-  <a href="#" id="reserver"></a>
 <input type="submit" value="Voir Info" class="bouton_titanic">
-</a>
 </div>
 </div>
 <a href="manif" class="concert_lien">Voir les autres pièces</a>
@@ -121,7 +121,6 @@ Nam lectus dolor, malesuada et rhoncus et, aliquam id erat. In hac habitasse pla
     </li>
   </ul>
 </footer>
-
 
 {% endblock %}
 {% endblock %}
