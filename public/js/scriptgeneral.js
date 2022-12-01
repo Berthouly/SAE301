@@ -1,4 +1,3 @@
-console.log("lance script general")
 liste = recupCookie("panier");
 if (liste!=null)montab = JSON.parse(liste)
 else montab =Array() 

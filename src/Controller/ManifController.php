@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Manif;
 use App\Form\ManifType;
+use App\Form\SearchType;
 use App\Repository\ManifRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,11 +14,28 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/manif')]
 class ManifController extends AbstractController
 {
-    #[Route('/', name: 'app_manif_index', methods: ['GET'])]
-    public function index(ManifRepository $manifRepository): Response
+    #[Route('/', name: 'app_manif_index')]
+    public function index(ManifRepository $manifRepository, Request $request): Response
     {
+        $SearchForm = $this->createForm(SearchType::class);
+        $SearchForm->handleRequest($request);
+
+        if($SearchForm->isSubmitted()&& $SearchForm->isValid()){
+            $dataform = $SearchForm->getData();
+
+            $manifForm = $manifRepository->searchManif($dataform->getSalle()->getNom());
+
+
+            return $this->render('manif/index.html.twig', [
+                'manifs' => $manifForm,
+                'form' => $SearchForm->createView(),
+            ]);
+
+        }
+
         return $this->render('manif/index.html.twig', [
             'manifs' => $manifRepository->findAll(),
+            'form' => $SearchForm->createView(),
         ]);
     }
 
@@ -83,4 +101,7 @@ class ManifController extends AbstractController
 
         return $this->redirectToRoute('app_manif_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
+
 }

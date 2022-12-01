@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Detail Manif{% endblock %}
-
+{% block javascript %}
+<script type="text/javascript" src="{{ asset('js/scriptpagearticles.js') }}" defer></script>
+    {% endblock %}
 {% block body %}
 {% block content %}
 
@@ -19,9 +21,9 @@
 <table class="customers">
 
     <tbody>
-            <td class="reserver_titre">{{ manif.titre }}</td>
+            <td class="reserver_titre" id="article">{{ manif.titre }}</td>
             <td class="place_detail">Nb Place :</td>
-            <td> <span id="prix">{{ manif.prix }}€</span></td>
+            <td> <span id="prix">{{ manif.prix }}</span>€</td>
             <td><input type="number" value="1" min="1" max="99" id="qte">
             <input type="hidden" id="id" value="{{ manif.id }}">
             <button id="ajout">RÉSERVER</button></td>

@@ -3,6 +3,22 @@
 
 {% block body %}
 {% block content %}
+
+  {#   <form action="reponse_recherche.php" method="GET" data-parsley-validate class="nav_form" id="nav-form">
+        <input type="search" id="real" placeholder="Recherche" list="manifestation" name="recherche_manifs" autocomplete="off" />
+        <input type="submit" id="bouton_recherche" value="Envoyer">
+    </form>
+  #}
+
+{{ form_start(form) }}
+    {{ form_row(form.Salle) }}
+    {{ form_row(form.Chercher) }}
+    {{ form_end(form) }}
+
+    <div style="margin-bottom: 200px">
+
+    </div >
+
     </div>
     <section class="section_manifs">
     <div id="card_container">

@@ -1,4 +1,3 @@
-console.log("lance script articles")
 
 document.getElementById('ajout').addEventListener('click',function() { 
     liste = recupCookie("panier"); //recupere le cookie  sous forme de chaine de caractere 

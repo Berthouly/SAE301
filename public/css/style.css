@@ -277,8 +277,29 @@ h1 {
     margin-left: 25%;
 }
 
+ #search_Salle{
+     width: 50%;
+     padding: 8px;
+     border: 1px solid #ccc !important;
+     border-radius: 100px;
+     box-sizing: border-box;
+     margin-top: 40px;
+     resize: vertical;
+     margin-left: 25%;
+ }
+
 
 #bouton_recherche {
+    background-color: #E35A50;
+    color: white;
+    padding: 5px 40px;
+    border: none;
+    margin-top: 20px;
+    border-radius: 100px;
+    margin-left: 40%;
+}
+
+#search_Chercher{
     background-color: #E35A50;
     color: white;
     padding: 5px 40px;
@@ -639,13 +660,11 @@ h1 {
   
   .customers {
       position: relative;
-      left: 630px;
       height: 100px;
       bottom: 170px;
       border: 2px solid #E35A50;
       border-radius: 20px;
       text-align: center;
-      color: white;
       width: 560px;
   }
   

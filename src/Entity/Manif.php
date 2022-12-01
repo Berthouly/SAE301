@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\ManifRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+
+
 #[ORM\Entity(repositoryClass: ManifRepository::class)]
 
 class Manif
