@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ManifRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 
@@ -42,6 +44,14 @@ class Manif
 
     #[ORM\ManyToOne(inversedBy: 'manifs')]
     private ?Salle $Salle = null;
+
+    #[ORM\OneToMany(mappedBy: 'manif_id', targetEntity: PanierDetail::class)]
+    private Collection $panierDetails;
+
+    public function __construct()
+    {
+        $this->panierDetails = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -153,6 +163,36 @@ class Manif
     public function setSalle(?Salle $Salle): self
     {
         $this->Salle = $Salle;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, PanierDetail>
+     */
+    public function getPanierDetails(): Collection
+    {
+        return $this->panierDetails;
+    }
+
+    public function addPanierDetail(PanierDetail $panierDetail): self
+    {
+        if (!$this->panierDetails->contains($panierDetail)) {
+            $this->panierDetails->add($panierDetail);
+            $panierDetail->setManifId($this);
+        }
+
+        return $this;
+    }
+
+    public function removePanierDetail(PanierDetail $panierDetail): self
+    {
+        if ($this->panierDetails->removeElement($panierDetail)) {
+            // set the owning side to null (unless already changed)
+            if ($panierDetail->getManifId() === $this) {
+                $panierDetail->setManifId(null);
+            }
+        }
 
         return $this;
     }

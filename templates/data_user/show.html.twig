@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DataUser{% endblock %}
+
+{% block body %}
+    <h1>DataUser</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ data_user.id }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ data_user.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Numero</th>
+                <td>{{ data_user.numero }}</td>
+            </tr>
+            <tr>
+                <th>Numero_carte</th>
+                <td>{{ data_user.numeroCarte }}</td>
+            </tr>
+            <tr>
+                <th>Titulaire_carte</th>
+                <td>{{ data_user.titulaireCarte }}</td>
+            </tr>
+            <tr>
+                <th>Crypt</th>
+                <td>{{ data_user.crypt }}</td>
+            </tr>
+            <tr>
+                <th>Paypal_user</th>
+                <td>{{ data_user.paypalUser }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_data_user_index') }}">back to list</a>
+
+    <a href="{{ path('app_data_user_edit', {'id': data_user.id}) }}">edit</a>
+
+    {{ include('data_user/_delete_form.html.twig') }}
+{% endblock %}

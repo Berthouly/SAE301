@@ -2,17 +2,28 @@
 
 namespace App\Controller;
 
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class CompteController extends AbstractController
+
+
+
+class UserController extends AbstractController
 {
-    #[Route('/compte', name: 'app_compte')]
+
+
+    #[Route('/user', name: 'app_user')]
     public function index(): Response
     {
-        return $this->render('compte/index.html.twig', [
-            'controller_name' => 'CompteController',
+        return $this->render('user/index.html.twig', [
+            'controller_name' => 'UserController',
         ]);
     }
+
+
+
+
 }

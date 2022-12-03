@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -30,6 +32,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     private ?string $password = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $name = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: DataUser::class)]
+    private Collection $dataUsers;
+
+    public function __construct()
+    {
+        $this->dataUsers = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -100,5 +113,47 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, DataUser>
+     */
+    public function getDataUsers(): Collection
+    {
+        return $this->dataUsers;
+    }
+
+    public function addDataUser(DataUser $dataUser): self
+    {
+        if (!$this->dataUsers->contains($dataUser)) {
+            $this->dataUsers->add($dataUser);
+            $dataUser->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDataUser(DataUser $dataUser): self
+    {
+        if ($this->dataUsers->removeElement($dataUser)) {
+            // set the owning side to null (unless already changed)
+            if ($dataUser->getUser() === $this) {
+                $dataUser->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

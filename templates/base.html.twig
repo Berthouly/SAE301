@@ -21,7 +21,7 @@
         <li><a href="{{ path('app_manif_index') }}">MANIFESTATIONS</a></li> 
         <li><a href="{{ path('app_panier') }}">PANIER:<span id='panier'>0</span></a></li> 
         {% if app.user %}
-        <li><a href="{{ path('app_compte') }}">MON COMPTE</a></li>
+        <li><a href="{{ path('app_user') }}">MON COMPTE</a></li>
         <li><a href="{{ path('app_logout') }}">DECONNEXION</a></li>
         {% else %}
         <li><a href="{{ path('app_login') }}">CONNEXION</a></li> 
