@@ -8,27 +8,37 @@
 {% block content %}
 
 
+<div class="presentation">
+<h1>Népal - Concert</h1>
+<h1 class="trinity">Cheddar</h1>
+<h1>MARDI 20 DECEMBRE 2022</h1>
+<h1>A BAYONNE</h1>
+</div>
+
 <section class="section_detail">
-    <img src="{{ asset('img/') }}{{ manif.affiche }}" class="image_detail">
-    <div id="page_detail">
-    <h3 class="date_detail">{{ manif.date }}  -  {{ manif.horaire }}</h3>
-        <div id="barre"></div>
-    <h2 class="titre_detail">{{ manif.titre }}  -  <span class="genre_detail">{{ manif.genre }}</span></h2>
-    <h2 class="descript_detail">{{ manif.descript }}</h2>
+    <div class="detail_flex">
+        <img src="{{ asset('img/') }}{{ manif.affiche }}" class="image_detail">
+        <div id="page_detail">
+            <h3 class="date_detail">{{ manif.date }}  -  {{ manif.horaire }}</h3>
+            <div id="barre"></div>
+            <h2 class="titre_detail">{{ manif.titre }}  -  <span class="genre_detail">{{ manif.genre }}</span></h2>
+            <h2 class="descript_detail">{{ manif.descript }}</h2>
+            <table class="customers">
+
+                <tbody>
+                <td class="reserver_titre" id="article">{{ manif.titre }}</td>
+                <td class="place_detail">Nb Place :</td>
+                <td class="detail_prix"> <span id="prix">{{ manif.prix }}</span>€</td>
+                <td><input type="number" value="1" min="1" max="99" id="qte">
+                    <input type="hidden" id="id" value="{{ manif.id }}">
+                    <button id="ajout">RÉSERVER</button></td>
+                </tbody>
+            </table>
+        </div>
     </div>
 
 
-<table class="customers">
 
-    <tbody>
-            <td class="reserver_titre" id="article">{{ manif.titre }}</td>
-            <td class="place_detail">Nb Place :</td>
-            <td> <span id="prix">{{ manif.prix }}</span>€</td>
-            <td><input type="number" value="1" min="1" max="99" id="qte">
-            <input type="hidden" id="id" value="{{ manif.id }}">
-            <button id="ajout">RÉSERVER</button></td>
-    </tbody>
-</table>
 
        </section>
 

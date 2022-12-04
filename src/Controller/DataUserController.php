@@ -49,7 +49,6 @@ class DataUserController extends AbstractController
             $entityManager->persist($dataUser);
             $entityManager->flush();
 
-
         }
 
         return $this->renderForm('data_user/new.html.twig', [

@@ -7,37 +7,92 @@
 {% block body %}
     {% block content %}
 
-<section class="container_panier">
-<div class="panier">
-<h1 class="titre_panier">Panier</h1>
-  <table class="customers">
-      <thead>
-        <tr>
-          <th>ARTICLES</th>
-          <th>PRIX</th>
-          <th>QUANTITE</th>
-          <th>PRIX TOTAL</th>
-            <th></th>
-        </tr>
-      </thead>
-  <tbody id="zone"></tbody>
+        <div class="presentation">
+            <h1>Népal - Concert</h1>
+            <h1 class="trinity">Cheddar</h1>
+            <h1>MARDI 20 DECEMBRE 2022</h1>
+            <h1>A BAYONNE</h1>
+        </div>
+        <form class="form_panier" action="finalisation.php" method="post">
+            <input type="hidden" name="liste" id="liste">
+            <a href="{{ path('app_panier') }}"><img src="{{ asset('img/lien_panier1.png') }}" class="lien_panier1"></a>
+            <a href="{{ path('app_data_user_new') }}" class="valider"><img src="{{ asset('img/lien_panier2.png') }}" class="lien_panier2"></a>
+        </form>
 
-    <tfoot><tr><td id="bas" colspan="3"></td><td><span id="total">...</span>€</td></tr></tfoot>
+        <section class="section_panier">
+            <h1 class="panier_titre">VOTRE PANIER</h1>
+            <div class="table-wrapper">
+                <table class="fl-table">
+                    <thead>
+                    <tr>
+                        <th>ARTICLES</th>
+                        <th>QUANTITES</th>
+                        <th>PRIX</th>
+                        <th>PRIX TOTAL</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody id="zone"></tbody>
+
+                    <tfoot>
+                        <tr>
+                            <td id="bas" colspan="3"></td>
+                            <td><span id="total">...</span>€</td>
+                        </tr>
+                    </tfoot>
 
 
-  </table>
-
-
-
-
-    <br>
-    <form action="finalisation.php" method="post">
+                </table>
+            </div>
+                <br>
     <input type="hidden" name="liste" id="liste">
-    <a href="{{ path('app_data_user_new') }}" class="valider">Continuer</a>
-        <a href="{{ path('app_accueil') }}" class="valider">Retour</a>
-  </form>
-    </div>
-    </section>
+
+            <a href="{{ path('app_data_user_new') }}" class="panier_bouton">Suivant</a>
+
+
+        </section>
+        <footer class="footer">
+            <div class="footer__addr">
+                <h1 class="footer__logo">Le Pestacle</h1>
+                <h2>Contact</h2>
+                <address>
+                    9 Rue Quebec, 10430 Rosières-prés-Troyes<br>
+                    <a class="footer__btn" href="mailto:juleshemon63@gmail.com">Notre Mail</a>
+                </address>
+            </div>
+            <ul class="footer__nav">
+                <li class="nav__item">
+                    <h2 class="nav__title">Genre</h2>
+                    <ul class="nav__ul">
+                        <li><a href="#">Théâtre</a></li>
+                        <li><a href="#">Concert</a></li>
+                        <li><a href="#">Cinéma</a></li>
+                        <li><a href="#">Spectacle</a></li>
+                    </ul>
+                </li>
+                <li class="nav__item nav__item--extra">
+                    <h2 class="nav__title">Compte</h2>
+                    <ul class="nav__ul">
+                        <li><a href="#">Mot de passe oublié ?</a></li>
+                        <li><a href="#">Connexion</a></li>
+                    </ul>
+                </li>
+                <li class="nav__item">
+                    <h2 class="nav__title">Aide</h2>
+                    <ul class="nav__ul">
+                        <li><a href="#">Comment réserver ?</a></li>
+                        <li><a href="#">Comment se créer un compte ?</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </li>
+                <li class="nav__item">
+                    <h2 class="nav__title">Le Pestacle</h2>
+                    <ul class="nav__ul">
+                        <li><a href="#">A propos</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </li>
+            </ul>
 
 {% endblock %}
 {% endblock %}

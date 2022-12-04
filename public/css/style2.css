@@ -4,8 +4,8 @@
 :root {
     /*========== Colors ==========*/
     /*Color mode HSL(hue, saturation, lightness)*/
-    --first-color: hsl(244, 75%, 57%);
-    --second-color: hsl(249, 64%, 47%);
+    --first-color: #F2745E;
+    --second-color: #ec583f;
     --title-color: hsl(244, 12%, 12%);
     --text-color: hsl(244, 4%, 36%);
     --body-color: hsl(208, 97%, 85%);
@@ -38,6 +38,7 @@
     padding: 0;
     margin: 0;
 }
+
 
 main {
     background-color: var(--body-color);
@@ -587,4 +588,10 @@ input#registration_form_agreeTerms:checked::before{
 main{
     background-color: #fff !important;
     color: #000000 !important;
+}
+
+/*=============== USER/PROFILE =============*/
+
+img.logo.dropshadow-1{
+    display: none;
 }

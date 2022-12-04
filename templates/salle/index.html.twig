@@ -5,38 +5,30 @@
 {% block body %}
 
 {% block content %}
-<section class="container_panier">
-<div class="table_salle">
-<div class="limiter">
-<div class="container-table100">
-<div class="wrap-table100">
-<div class="table">
-<div class="row header">
-<div class="cell">
-                NOM
-                </div>
-<div class="cell">
-                CAPACITE
-                </div>
-<div class="cell">
-                ADRESSE
-</div>
-</div>
-     
-        {% for salle in salles %}
-            <div class="row">
-<div class="cell" data-title="Full Name">
-                {{ salle.nom }}
-                </div>
-<div class="cell" data-title="Age">
-                {{ salle.capacite }}
-                </div>
-<div class="cell" data-title="Job Title">
-                {{ salle.adresseRue }}
-                </div>
-</div>
+ <div class="presentation">
+        <h1 class="presentation_salle">Nos différentes salles</h1>
+    </div>
 
-           
+    <section class="section_salle">
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Capacite</th>
+                <th>Adresse_rue</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for salle in salles %}
+            <tr>
+                <td>{{ salle.id }}</td>
+                <td>{{ salle.nom }}</td>
+                <td>{{ salle.capacite }}</td>
+                <td>{{ salle.adresseRue }}</td>
+                
+            </tr>
         {% else %}
             <tr>
                 <td colspan="5">no records found</td>
@@ -44,8 +36,51 @@
         {% endfor %}
         </tbody>
     </table>
-    </div>
-</section>
+</div>
+    </section>
+    <footer class="footer">
+        <div class="footer__addr">
+            <h1 class="footer__logo">Le Pestacle</h1>
+            <h2>Contact</h2>
+            <address>
+                9 Rue Quebec, 10430 Rosières-prés-Troyes<br>
+                <a class="footer__btn" href="mailto:juleshemon63@gmail.com">Notre Mail</a>
+            </address>
+        </div>
+        <ul class="footer__nav">
+            <li class="nav__item">
+                <h2 class="nav__title">Genre</h2>
+                <ul class="nav__ul">
+                    <li><a href="#">Théâtre</a></li>
+                    <li><a href="#">Concert</a></li>
+                    <li><a href="#">Cinéma</a></li>
+                    <li><a href="#">Spectacle</a></li>
+                </ul>
+            </li>
+            <li class="nav__item nav__item--extra">
+                <h2 class="nav__title">Compte</h2>
+                <ul class="nav__ul">
+                    <li><a href="#">Mot de passe oublié ?</a></li>
+                    <li><a href="#">Connexion</a></li>
+                </ul>
+            </li>
+            <li class="nav__item">
+                <h2 class="nav__title">Aide</h2>
+                <ul class="nav__ul">
+                    <li><a href="#">Comment réserver ?</a></li>
+                    <li><a href="#">Comment se créer un compte ?</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </li>
+            <li class="nav__item">
+                <h2 class="nav__title">Le Pestacle</h2>
+                <ul class="nav__ul">
+                    <li><a href="#">A propos</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </li>
+        </ul>
+    </footer>
 
 {% endblock %}
 

@@ -4,6 +4,14 @@
 {% block body %}
 {% block content %}
 
+ <div id="back_accueil">
+        <div class="presentation">
+            <h1>Népal - Concert</h1>
+            <h1 class="trinity">Cheddar</h1>
+            <h1>MARDI 20 DECEMBRE 2022</h1>
+            <h1>A BAYONNE</h1>
+        </div>
+
   {#   <form action="reponse_recherche.php" method="GET" data-parsley-validate class="nav_form" id="nav-form">
         <input type="search" id="real" placeholder="Recherche" list="manifestation" name="recherche_manifs" autocomplete="off" />
         <input type="submit" id="bouton_recherche" value="Envoyer">
@@ -15,23 +23,27 @@
     {{ form_row(form.Chercher) }}
     {{ form_end(form) }}
 
-    <div style="margin-bottom: 200px">
 
     </div >
 
     </div>
-    <section class="section_manifs">
+     <section class="section_manifs">
     <div id="card_container">
         {% for manif in manifs %}
-                <div class="event_card">
-                    <div class="image_card"><img src="{{ asset('img/') }}{{ manif.affiche }}"></div>
-                    <div class="info_card">
-                        <p class="titre_card">{{ manif.titre }}</p>
+            <div class="event_card">
+                <a href="{{ manif.id }}">
+                <div class="image_card"><img src="{{ asset('img/') }}{{ manif.affiche }}"></div>
+                <div class="fadedbox">
+                    <div class="fade_text">
+                        <p class="titre_card">{{ manif.titre }}</p><br>
                         <p class="genre_card">{{ manif.genre }}</p>
                         <p class="prix_card">{{ manif.prix }}€</p>
-                        <p><a class="lien_card" href="{{ manif.id }}">Voir Info</a></p>
+                        <h4 class="synopsis_card">Synopsis</h4><br>
+                        <p class="descript_card">{{ manif.descript }}</p>
                     </div>
                 </div>
+                </a>
+            </div>
 
         {% else %}
             <tr>
@@ -40,49 +52,48 @@
         {% endfor %}
     </div>
     </section>
-
     <footer class="footer">
-    <div class="footer__addr">
-        <h1 class="footer__logo">Le Pestacle</h1>
-        <h2>Contact</h2>
-        <address>
-            9 Rue Quebec, 10430 Rosières-prés-Troyes<br>
-            <a class="footer__btn" href="mailto:juleshemon63@gmail.com">Notre Mail</a>
-        </address>
-    </div>
-    <ul class="footer__nav">
-        <li class="nav__item">
-            <h2 class="nav__title">Genre</h2>
-            <ul class="nav__ul">
-                <li><a href="#">Théâtre</a></li>
-                <li><a href="#">Concert</a></li>
-                <li><a href="#">Cinéma</a></li>
-                <li><a href="#">Spectacle</a></li>
-            </ul>
-        </li>
-        <li class="nav__item nav__item--extra">
-            <h2 class="nav__title">Compte</h2>
-            <ul class="nav__ul">
-                <li><a href="#">Mot de passe oublié ?</a></li>
-                <li><a href="#">Connexion</a></li>
-            </ul>
-        </li>
-        <li class="nav__item">
-            <h2 class="nav__title">Aide</h2>
-            <ul class="nav__ul">
-                <li><a href="#">Comment réserver ?</a></li>
-                <li><a href="#">Comment se créer un compte ?</a></li>
-                <li><a href="#">FAQ</a></li>
-            </ul>
-        </li>
-        <li class="nav__item">
-            <h2 class="nav__title">Le Pestacle</h2>
-            <ul class="nav__ul">
-                <li><a href="#">A propos</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </li>
-    </ul>
-</footer>
+        <div class="footer__addr">
+            <h1 class="footer__logo">Le Pestacle</h1>
+            <h2>Contact</h2>
+            <address>
+                9 Rue Quebec, 10430 Rosières-prés-Troyes<br>
+                <a class="footer__btn" href="mailto:juleshemon63@gmail.com">Notre Mail</a>
+            </address>
+        </div>
+        <ul class="footer__nav">
+            <li class="nav__item">
+                <h2 class="nav__title">Genre</h2>
+                <ul class="nav__ul">
+                    <li><a href="#">Théâtre</a></li>
+                    <li><a href="#">Concert</a></li>
+                    <li><a href="#">Cinéma</a></li>
+                    <li><a href="#">Spectacle</a></li>
+                </ul>
+            </li>
+            <li class="nav__item nav__item--extra">
+                <h2 class="nav__title">Compte</h2>
+                <ul class="nav__ul">
+                    <li><a href="#">Mot de passe oublié ?</a></li>
+                    <li><a href="#">Connexion</a></li>
+                </ul>
+            </li>
+            <li class="nav__item">
+                <h2 class="nav__title">Aide</h2>
+                <ul class="nav__ul">
+                    <li><a href="#">Comment réserver ?</a></li>
+                    <li><a href="#">Comment se créer un compte ?</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </li>
+            <li class="nav__item">
+                <h2 class="nav__title">Le Pestacle</h2>
+                <ul class="nav__ul">
+                    <li><a href="#">A propos</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </li>
+        </ul>
+    </footer>
 {% endblock %}
 {% endblock %}

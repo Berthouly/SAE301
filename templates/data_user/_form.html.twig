@@ -1,4 +1,4 @@
-{{ form_start(form) }}
+{{ form_start(form, {'action': path('app_accueil')}) }}
     {{ form_row(form.adresse) }}
     {{ form_row(form.numero) }}
 <button type="button" id="bouton" class="btn-primary">Hide List</button>
@@ -16,9 +16,11 @@
 
 {{ form_row(form.paypal_user) }}
 </div>
-<form action="{{ path('app_accueil') }}">
+
+
 <button>{{ button_label|default('Enrengistrer') }}</button>
-</form>
+
+
 {{ form_end(form) }}
 
     {% block javascript %}
