@@ -16,8 +16,9 @@
 
 {{ form_row(form.paypal_user) }}
 </div>
-
-    <button>{{ button_label|default('Enrengistrer') }}</button>
+<form action="{{ path('app_accueil') }}">
+<button>{{ button_label|default('Enrengistrer') }}</button>
+</form>
 {{ form_end(form) }}
 
     {% block javascript %}

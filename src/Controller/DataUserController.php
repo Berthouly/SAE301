@@ -2,12 +2,16 @@
 
 namespace App\Controller;
 
+
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+
 use App\Entity\DataUser;
 use App\Entity\User;
 use App\Form\DataUserType;
 use App\Repository\DataUserRepository;
 use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,6 +21,7 @@ use Doctrine\ORM\EntityManagerInterface;
 #[Route('/data/user')]
 class DataUserController extends AbstractController
 {
+
     #[Route('/', name: 'app_data_user_index')]
     public function index( DataUserRepository $dataUserRepository): Response
     {
@@ -46,6 +51,7 @@ class DataUserController extends AbstractController
 
 
         }
+
         return $this->renderForm('data_user/new.html.twig', [
             'data_user' => $dataUser,
             'form' => $form,
@@ -54,6 +60,14 @@ class DataUserController extends AbstractController
 
     #[Route('/{id}', name: 'app_data_user_show', methods: ['GET'])]
     public function show(DataUser $dataUser): Response
+    {
+        return $this->render('data_user/show.html.twig', [
+            'data_user' => $dataUser,
+        ]);
+    }
+
+    #[Route('/valid', name: 'app_data_user_valid')]
+    public function valid(DataUser $dataUser): Response
     {
         return $this->render('data_user/show.html.twig', [
             'data_user' => $dataUser,

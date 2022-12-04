@@ -23,6 +23,15 @@ class UserController extends AbstractController
         ]);
     }
 
+    #[Route('/user/achat', name: 'app_user_achat')]
+    public function achat(): Response
+    {
+
+
+        return $this->render('user/achat.html.twig', [
+            'controller_name' => 'UserController',
+        ]);
+    }
 
 
 

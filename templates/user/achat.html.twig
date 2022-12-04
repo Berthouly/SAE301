@@ -1,0 +1,42 @@
+{% extends 'user.html.twig' %}
+
+{% block title %}Profil de {{ app.user.email }}{% endblock %}
+{% block javascript %}
+<script src="{{ asset('js/scriptpanier.js') }}" defer></script>
+{% endblock %}
+{% block body %}
+    <div class="grix xs4 container">
+        {% for message in app.flashes('message') %}
+            <div class="col-xs4">
+                <div class="p-3 my-2 rounded-2 success">{{message}}</div>
+            </div>
+        {% endfor %}
+        <div class="col-xs4">
+            <h1>Profil de {{ app.user.email }}</h1>
+        </div>
+        <div class="panier">
+            <h1 class="titre_panier">Panier</h1>
+        <table class="customers">
+            <thead>
+            <tr>
+                <th>ARTICLES</th>
+                <th>QUANTITE</th>
+                <th>PRIX</th>
+                <th>PRIX TOTAL</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody id="zone"></tbody>
+
+            <tfoot><tr><td id="bas" colspan="3"></td><td><span id="total">...</span>€</td></tr></tfoot>
+
+
+        </table>
+            <input type="hidden" name="liste" id="liste">
+
+        </div>
+
+
+
+    </div>
+{% endblock %}
