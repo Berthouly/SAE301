@@ -14,22 +14,26 @@
       <thead>
         <tr>
           <th>ARTICLES</th>
+          <th>PRIX</th>
           <th>QUANTITE</th>
-          <th>PRIX UNITAIRE</th>
           <th>PRIX TOTAL</th>
+            <th></th>
         </tr>
       </thead>
-      <tbody id="zone">
-     
-          
- 
-      </tbody>
-      <tfoot><tr><td id="bas" colspan="3"></td><td><span id="total">...</span></td></tr></tfoot>
-    </table>
+  <tbody id="zone"></tbody>
+
+    <tfoot><tr><td id="bas" colspan="3"></td><td><span id="total">...</span>€</td></tr></tfoot>
+
+
+  </table>
+
+
+
+
     <br>
     <form action="finalisation.php" method="post">
     <input type="hidden" name="liste" id="liste">
-    <a href="{{ path('app_data_user_new') }}" class="valider">Continuer</a>
+    <a href="#" class="valider">Continuer</a>
         <a href="{{ path('app_accueil') }}" class="valider">Retour</a>
   </form>
     </div>

@@ -32,18 +32,20 @@ class DataUserController extends AbstractController
 
 
     #[Route('/new', name: 'app_data_user_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, DataUserRepository $dataUserRepository): Response
+    public function new(Request $request, DataUserRepository $dataUserRepository, EntityManagerInterface $entityManager) : Response
     {
         $dataUser = new DataUser();
         $form = $this->createForm(DataUserType::class, $dataUser);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $dataUserRepository->save($dataUser, true);
+            $user = $this->getUser();
+            $dataUser->setUser($user);
+            $entityManager->persist($dataUser);
+            $entityManager->flush();
 
-            return $this->redirectToRoute('app_data_user_index', [], Response::HTTP_SEE_OTHER);
+
         }
-
         return $this->renderForm('data_user/new.html.twig', [
             'data_user' => $dataUser,
             'form' => $form,
@@ -58,7 +60,7 @@ class DataUserController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_data_user_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/edit', name: 'app_data_user_edit')]
     public function edit(Request $request, DataUser $dataUser, DataUserRepository $dataUserRepository, EntityManagerInterface $entityManager): Response
     {
         $dataUser = new DataUser();
