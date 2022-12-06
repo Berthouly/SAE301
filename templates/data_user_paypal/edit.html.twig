@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit DataUserPaypal{% endblock %}
+
+{% block body %}
+    <h1>Edit DataUserPaypal</h1>
+
+    {{ include('data_user_paypal/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_data_user_paypal_index') }}">back to list</a>
+
+    {{ include('data_user_paypal/_delete_form.html.twig') }}
+{% endblock %}

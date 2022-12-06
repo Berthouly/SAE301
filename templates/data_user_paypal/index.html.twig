@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DataUserPaypal index{% endblock %}
+
+{% block body %}
+    <h1>DataUserPaypal index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Adresse</th>
+                <th>Numero</th>
+                <th>Paypal_User</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for data_user_paypal in data_user_paypals %}
+            <tr>
+                <td>{{ data_user_paypal.id }}</td>
+                <td>{{ data_user_paypal.adresse }}</td>
+                <td>{{ data_user_paypal.numero }}</td>
+                <td>{{ data_user_paypal.PaypalUser }}</td>
+                <td>
+                    <a href="{{ path('app_data_user_paypal_show', {'id': data_user_paypal.id}) }}">show</a>
+                    <a href="{{ path('app_data_user_paypal_edit', {'id': data_user_paypal.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_data_user_paypal_new') }}">Create new</a>
+{% endblock %}

@@ -39,9 +39,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: DataUser::class)]
     private Collection $dataUsers;
 
+    #[ORM\OneToMany(mappedBy: 'user_id', targetEntity: DataUserPaypal::class)]
+    private Collection $dataUserPaypals;
+
     public function __construct()
     {
         $this->dataUsers = new ArrayCollection();
+        $this->dataUserPaypals = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -151,6 +155,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($dataUser->getUser() === $this) {
                 $dataUser->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, DataUserPaypal>
+     */
+    public function getDataUserPaypals(): Collection
+    {
+        return $this->dataUserPaypals;
+    }
+
+    public function addDataUserCPaypal(DataUserPaypal $dataUserPaypal): self
+    {
+        if (!$this->dataUserPaypals->contains($dataUserPaypal)) {
+            $this->dataUserPaypals->add($dataUserPaypal);
+            $dataUserPaypal->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDataUserPaypal(DataUserPaypal $dataUserPaypal): self
+    {
+        if ($this->dataUserPaypals->removeElement($dataUserPaypal)) {
+            // set the owning side to null (unless already changed)
+            if ($dataUserPaypal->getUserId() === $this) {
+                $dataUserPaypal->setUserId(null);
             }
         }
 

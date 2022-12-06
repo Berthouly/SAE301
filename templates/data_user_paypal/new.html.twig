@@ -18,9 +18,9 @@
     </form>
 
     <section class="section_coordonne">
-    <h1>VOS COORDONNEES</h1>
+        <h1>VOS COORDONNEES</h1>
 
-    {{ include('data_user/_form.html.twig') }}
+        {{ include('data_user_paypal/_form.html.twig') }}
         <br><br><br><br><br><br><br><br><br><br>
 
         <a href="{{ path('app_panier') }}" class="coordonne_bouton">Retour</a>
@@ -68,6 +68,6 @@
             </li>
         </ul>
     </footer>
-        {% endblock %}
+    {% endblock %}
 
-{% endblock %}
+    {% endblock %}

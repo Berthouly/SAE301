@@ -28,8 +28,6 @@ class DataUser
     #[ORM\Column(length: 255)]
     private ?string $crypt = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $paypal_user = null;
 
     #[ORM\ManyToOne(inversedBy: 'dataUsers')]
     private ?User $user = null;
@@ -100,17 +98,6 @@ class DataUser
         return $this;
     }
 
-    public function getPaypalUser(): ?string
-    {
-        return $this->paypal_user;
-    }
-
-    public function setPaypalUser(string $paypal_user): self
-    {
-        $this->paypal_user = $paypal_user;
-
-        return $this;
-    }
 
     public function getUser(): ?User
     {

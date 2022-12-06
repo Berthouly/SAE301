@@ -1254,15 +1254,44 @@ form.form_panier {
 }
 
 input#data_user_adresse {
-  margin: 10px;
+  margin: 8px;
+  padding: 5px;
   margin-left: 46px;
   border: 1.5px solid #E35A50;
   border-radius: 5px;
   width: 360px;
 }
 
+input#data_user_paypal_adresse {
+    margin: 8px;
+    padding: 5px;
+    margin-left: 46px;
+    border: 1.5px solid #E35A50;
+    border-radius: 5px;
+    width: 360px;
+}
+
+input#data_user_paypal_numero {
+    margin: 8px;
+    padding: 5px;
+    margin-left: 46px;
+    border: 1.5px solid #E35A50;
+    border-radius: 5px;
+    width: 360px;
+}
+
+input#data_user_paypal_Paypal_User {
+    margin: 8px;
+    padding: 5px;
+    margin-left: 46px;
+    border: 1.5px solid #E35A50;
+    border-radius: 5px;
+    width: 360px;
+}
+
 input#data_user_numero {
-  margin: 10px;
+  margin: 8px;
+  padding: 5px;
   margin-left: 47px;
   border: 1.5px solid #E35A50;
   border-radius: 5px;
@@ -1270,7 +1299,8 @@ input#data_user_numero {
 }
 
 input#data_user_numero_carte {
-  margin: 10px;
+  margin: 8px;
+  padding: 5px;
   margin-left: 10px;
   border: 1.5px solid #E35A50;
   border-radius: 5px;
@@ -1278,7 +1308,8 @@ input#data_user_numero_carte {
 }
 
 input#data_user_titulaire_carte {
-  margin: 10px;
+  margin: 8px;
+  padding: 5px;
   margin-left: 10px;
   border: 1.5px solid #E35A50;
   border-radius: 5px;
@@ -1286,7 +1317,8 @@ input#data_user_titulaire_carte {
 }
 
 input#data_user_crypt {
-  margin: 10px;
+  margin: 8px;
+  padding: 5px;
   margin-left: 65px;
   border: 1.5px solid #E35A50;
   border-radius: 5px;
@@ -1294,7 +1326,8 @@ input#data_user_crypt {
 }
 
 input#data_user_paypal_user {
-  margin: 10px;
+  margin: 8px;
+  padding: 5px;
   border: 1.5px solid #E35A50;
   border-radius: 5px;
   width: 360px;
@@ -1316,6 +1349,7 @@ button#bouton {
   color: white;
   border: 1px solid white;
   border-radius: 5px;
+
 }
 
 button#touche {
@@ -1332,7 +1366,7 @@ button {
   color: white;
   border: 1px solid white;
   border-radius: 5px;
-}
+    cursor: pointer !important}
 
 .coordonne_bouton {
   padding: 13px 30px 13px 30px;
@@ -1342,7 +1376,6 @@ button {
   top: 15px;
   border-radius: 100px;
   box-shadow: 0px 8px 12px -4px rgb(0 0 0 / 21%);
-  border: 1px solid white;
   font-size: 15px;
   text-decoration: none;
   margin-right: 45%;
@@ -1365,6 +1398,20 @@ button {
       margin-left: 47px!important;
   }
 
+    input#data_user_paypal_adresse {
+        width: 290px!important;
+        margin-left: 47px!important;
+    }
+
+    input#data_user_paypal_numero {
+        width: 290px!important;
+        margin-left: 47px!important;
+    }
+
+    input#data_user_paypal_Paypal_User {
+        width: 290px!important;
+        margin-left: 47px!important;
+    }
   input#data_user_numero {
       width: 290px!important;
       margin-left: 47px!important;
@@ -1397,6 +1444,20 @@ button {
       margin-left: 47px!important;
   }
 
+    input#data_user_paypal_adresse {
+        width: 196px!important;
+        margin-left: 47px!important;
+    }
+
+    input#data_user_paypal_numero {
+        width: 196px!important;
+        margin-left: 47px!important;
+    }
+
+    input#data_user_paypal_Paypal_User {
+        width: 196px!important;
+        margin-left: 47px!important;
+    }
   input#data_user_numero {
       width: 196px!important;
       margin-left: 47px!important;
@@ -1432,7 +1493,6 @@ button {
   padding: 30px 30px 20px 30px;
   color: #fefefe;
   background-color: #E35A50;
-  border-top: 1px solid black;
 }
 
 .footer > * {

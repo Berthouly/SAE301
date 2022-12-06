@@ -1,0 +1,12 @@
+
+{{ form_start(form,  {'attr': {'id': 'form_coordonne'}}) }}
+    {{ form_row(form.adresse, {'attr': {'id': 'form_label'}}) }}
+    {{ form_row(form.numero, {'attr': {'id': 'form_label'}}) }}
+
+
+    {{ form_row(form.Paypal_User, {'attr': {'id': 'form_label'}}) }}
+
+
+
+<button>{{ button_label|default('Enrengistrer', {'action': path('app_accueil')}) }}</button>
+{{ form_end(form) }}

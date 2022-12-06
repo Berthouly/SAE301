@@ -25,13 +25,7 @@ class Salle
     #[ORM\Column(length: 255)]
     private ?string $adresse_rue = null;
 
-    #[ORM\OneToMany(mappedBy: 'Salle', targetEntity: Manif::class)]
-    private Collection $manifs;
-
-    public function __construct()
-    {
-        $this->manifs = new ArrayCollection();
-    }
+  
 
 
 

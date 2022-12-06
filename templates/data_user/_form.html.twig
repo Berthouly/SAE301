@@ -1,59 +1,14 @@
-{{ form_start(form, {'action': path('app_accueil')}) }}
-    {{ form_row(form.adresse) }}
-    {{ form_row(form.numero) }}
-<button type="button" id="bouton" class="btn-primary">Hide List</button>
 
-<div class="paypal">
+{{ form_start(form,  {'attr': {'id': 'form_coordonne'}}) }}
+    {{ form_row(form.adresse, {'attr': {'id': 'form_label'}}) }}
+    {{ form_row(form.numero, {'attr': {'id': 'form_label'}}) }}
 
 
-    {{ form_row(form.numero_carte) }}
-    {{ form_row(form.titulaire_carte) }}
-    {{ form_row(form.crypt) }}
-</div>
-<button type="button" id="touche" class="btn-primary">Hide List</button>
-
-<div class="carte">
-
-{{ form_row(form.paypal_user) }}
-</div>
+    {{ form_row(form.numero_carte, {'attr': {'id': 'form_label'}}) }}
+    {{ form_row(form.titulaire_carte, {'attr': {'id': 'form_label'}}) }}
+    {{ form_row(form.crypt, {'attr': {'id': 'form_label'}}) }}
 
 
-<button>{{ button_label|default('Enrengistrer') }}</button>
-
-
+<button>{{ button_label|default('Enrengistrer', {'action': path('app_accueil')}) }}</button>
 {{ form_end(form) }}
 
-    {% block javascript %}
-    <script type="text/javascript">
-
-    const toggleBtn = document.querySelector('#bouton');
-    const divList = document.querySelector('.paypal');
-
-    toggleBtn.addEventListener('click', () => {
-        if (divList.style.display === 'none') {
-            divList.style.display = 'block';
-            toggleBtn.innerHTML = 'Hide List';
-        } else {
-            divList.style.display = 'none';
-            toggleBtn.innerHTML = 'Show List';
-        }
-
-    });
-
-        const bouton = document.querySelector('#touche');
-        const list = document.querySelector('.carte');
-
-        bouton.addEventListener('click', () => {
-        if (list.style.display === 'none') {
-        list.style.display = 'block';
-        bouton.innerHTML = 'Hide List';
-    } else {
-        list.style.display = 'none';
-        bouton.innerHTML = 'Show List';
-    }
-
-    });
-
-
-    </script>
-    {% endblock %}

@@ -3,15 +3,12 @@
 namespace App\Controller;
 
 
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 use App\Entity\DataUser;
 use App\Entity\User;
 use App\Form\DataUserType;
 use App\Repository\DataUserRepository;
-use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -37,7 +34,7 @@ class DataUserController extends AbstractController
 
 
     #[Route('/new', name: 'app_data_user_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, DataUserRepository $dataUserRepository, EntityManagerInterface $entityManager) : Response
+    public function new(Request $request, EntityManagerInterface $entityManager) : Response
     {
         $dataUser = new DataUser();
         $form = $this->createForm(DataUserType::class, $dataUser);
