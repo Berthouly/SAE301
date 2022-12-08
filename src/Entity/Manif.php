@@ -45,13 +45,18 @@ class Manif
     #[ORM\ManyToOne(inversedBy: 'manifs')]
     private ?Salle $Salle = null;
 
-    #[ORM\OneToMany(mappedBy: 'manif_id', targetEntity: PanierDetail::class)]
+    #[ORM\OneToMany(mappedBy: 'manif_commande_id', targetEntity: PanierDetail::class)]
     private Collection $panierDetails;
+
+    #[ORM\OneToMany(mappedBy: 'manif_id', targetEntity: DataUserPaypal::class)]
+    private Collection $dataUserPaypals;
 
     public function __construct()
     {
         $this->panierDetails = new ArrayCollection();
+        $this->dataUserPaypals = new ArrayCollection();
     }
+
 
 
     public function getId(): ?int
@@ -179,7 +184,7 @@ class Manif
     {
         if (!$this->panierDetails->contains($panierDetail)) {
             $this->panierDetails->add($panierDetail);
-            $panierDetail->setManifId($this);
+            $panierDetail->setManifCommandeId($this);
         }
 
         return $this;
@@ -189,15 +194,43 @@ class Manif
     {
         if ($this->panierDetails->removeElement($panierDetail)) {
             // set the owning side to null (unless already changed)
-            if ($panierDetail->getManifId() === $this) {
-                $panierDetail->setManifId(null);
+            if ($panierDetail->getManifCommandeId() === $this) {
+                $panierDetail->setManifCommandeId(null);
             }
         }
 
         return $this;
     }
 
-    
+    /**
+     * @return Collection<int, DataUserPaypal>
+     */
+    public function getDataUserPaypals(): Collection
+    {
+        return $this->dataUserPaypals;
+    }
+
+    public function addDataUserPaypal(DataUserPaypal $dataUserPaypal): self
+    {
+        if (!$this->dataUserPaypals->contains($dataUserPaypal)) {
+            $this->dataUserPaypals->add($dataUserPaypal);
+            $dataUserPaypal->setManifId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDataUserPaypal(DataUserPaypal $dataUserPaypal): self
+    {
+        if ($this->dataUserPaypals->removeElement($dataUserPaypal)) {
+            // set the owning side to null (unless already changed)
+            if ($dataUserPaypal->getManifId() === $this) {
+                $dataUserPaypal->setManifId(null);
+            }
+        }
+
+        return $this;
+    }
 
 
 }

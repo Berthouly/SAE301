@@ -1,6 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Salle index{% endblock %}
 
 {% block body %}
 
@@ -14,7 +13,6 @@
     <table class="fl-table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Nom</th>
                 <th>Capacite</th>
                 <th>Adresse_rue</th>
@@ -23,7 +21,6 @@
         <tbody>
         {% for salle in salles %}
             <tr>
-                <td>{{ salle.id }}</td>
                 <td>{{ salle.nom }}</td>
                 <td>{{ salle.capacite }}</td>
                 <td>{{ salle.adresseRue }}</td>

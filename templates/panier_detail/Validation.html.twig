@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    {% block content %}
+
+        <div id="back_accueil">
+        <div class="presentation">
+            <h1>Népal - Concert</h1>
+            <h1 class="trinity">Cheddar</h1>
+            <h1>MARDI 20 DECEMBRE 2022</h1>
+            <h1>A BAYONNE</h1>
+        </div>
+        <section class="section_coordonne">
+
+            <h1>Votre commande a été éffectué !</h1>
+
+
+            <a href="{{ path('app_accueil') }}" style="margin:auto" class="coordonne_bouton">Retour accueil</a>
+
+        </section>
+    {% endblock %}
+
+    {% block javascript %}
+         <script type="text/javascript">
+            document.cookie = '[]';
+        </script>
+    {% endblock %}
+{% endblock %}

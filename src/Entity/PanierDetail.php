@@ -23,7 +23,21 @@ class PanierDetail
     private ?string $prix = null;
 
     #[ORM\ManyToOne(inversedBy: 'panierDetails')]
-    private ?Manif $manif_id = null;
+    private ?DataUser $data_user_CB = null;
+
+    #[ORM\ManyToOne(inversedBy: 'panierDetails')]
+    private ?DataUserPaypal $data_user_paypal = null;
+
+    #[ORM\ManyToOne(inversedBy: 'panierDetails')]
+    private ?Manif $manif_commande_id = null;
+
+    #[ORM\ManyToOne(inversedBy: 'panierDetails')]
+    private ?User $user_id = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $Commande = null;
+
+
 
     public function getId(): ?int
     {
@@ -66,15 +80,66 @@ class PanierDetail
         return $this;
     }
 
-    public function getManifId(): ?Manif
+    public function getDataUserCB(): ?DataUser
     {
-        return $this->manif_id;
+        return $this->data_user_CB;
     }
 
-    public function setManifId(?Manif $manif_id): self
+    public function setDataUserCB(?DataUser $data_user_CB): self
     {
-        $this->manif_id = $manif_id;
+        $this->data_user_CB = $data_user_CB;
 
         return $this;
     }
+
+    public function getDataUserPaypal(): ?DataUserPaypal
+    {
+        return $this->data_user_paypal;
+    }
+
+    public function setDataUserPaypal(?DataUserPaypal $data_user_paypal): self
+    {
+        $this->data_user_paypal = $data_user_paypal;
+
+        return $this;
+    }
+
+    public function getManifCommandeId(): ?Manif
+    {
+        return $this->manif_commande_id;
+    }
+
+    public function setManifCommandeId(?Manif $manif_commande_id): self
+    {
+        $this->manif_commande_id = $manif_commande_id;
+
+        return $this;
+    }
+
+    public function getUserId(): ?User
+    {
+        return $this->user_id;
+    }
+
+    public function setUserId(?User $user_id): self
+    {
+        $this->user_id = $user_id;
+
+        return $this;
+    }
+
+    public function getCommande(): ?string
+    {
+        return $this->Commande;
+    }
+
+    public function setCommande(string $Commande): self
+    {
+        $this->Commande = $Commande;
+
+        return $this;
+    }
+
+
+
 }

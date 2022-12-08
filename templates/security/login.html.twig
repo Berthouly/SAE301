@@ -2,13 +2,15 @@
 {% block head %}
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#E35A50;"/>
 
-        <!--=============== REMIXICONS ===============-->
+    <!--=============== REMIXICONS ===============-->
         <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
         <!--=============== CSS ===============-->
         <link href="{{ asset('css/style2.css') }}" rel="stylesheet"/>
-        <title>Login</title>
+    <title>{% block title %}Le Pestacle {% endblock %}</title>
+
 {% endblock %}
 
 

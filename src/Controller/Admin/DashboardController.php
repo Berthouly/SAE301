@@ -39,6 +39,7 @@ class DashboardController extends AbstractDashboardController
     {
         return Dashboard::new()
             ->setTitle('Sae301');
+
     }
 
     public function configureMenuItems(): iterable

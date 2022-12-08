@@ -1,6 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PanierController!{% endblock %}
 {% block javascript %}
 <script src="{{ asset('js/scriptpanier.js') }}" defer></script>
 {% endblock %}
@@ -13,10 +12,10 @@
             <h1>MARDI 20 DECEMBRE 2022</h1>
             <h1>A BAYONNE</h1>
         </div>
-        <form class="form_panier" action="finalisation.php" method="post">
+        <form class="form_panier" action="" method="post">
             <input type="hidden" name="liste" id="liste">
-            <a href="{{ path('app_panier') }}"><img src="{{ asset('img/lien_panier1.png') }}" class="lien_panier1"></a>
-            <a href="{{ path('app_data_user_new') }}" class="valider"><img src="{{ asset('img/lien_panier2.png') }}" class="lien_panier2"></a>
+            <a href="#"><img src="{{ asset('img/lien_panier1.png') }}" class="lien_panier1"></a>
+            <a href="#" class="valider"><img src="{{ asset('img/lien_panier2.png') }}" class="lien_panier2"></a>
         </form>
 
         <section class="section_panier">
@@ -48,6 +47,7 @@
     <input type="hidden" name="liste" id="liste">
 
             <a href="{{ path('app_data_user_new') }}" class="panier_bouton">Payer en CB</a>
+            <div style="padding: 2%"></div>
             <a href="{{ path('app_data_user_paypal_new') }}" class="panier_bouton">Payer en Paypal</a>
 
 
@@ -94,6 +94,6 @@
                     </ul>
                 </li>
             </ul>
-
+        </footer>
 {% endblock %}
 {% endblock %}

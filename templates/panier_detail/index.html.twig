@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+{% block content %}
+
+
+
+
+{% endblock %}
+
+    {% block javascript %}
+        <script type="text/javascript" defer>
+
+            cookie = '{{ Cookie }}'
+            tabcookie = JSON.parse(cookie.replace[/quest\])
+            console.log(tabcookie)
+        </script>
+{% endblock %}

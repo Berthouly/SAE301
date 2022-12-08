@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\DataUserPaypalRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: DataUserPaypalRepository::class)]
@@ -24,6 +26,17 @@ class DataUserPaypal
 
     #[ORM\ManyToOne(inversedBy: 'dataUserPaypals')]
     private ?User $user_id = null;
+
+    #[ORM\OneToMany(mappedBy: 'data_user_paypal', targetEntity: PanierDetail::class)]
+    private Collection $panierDetails;
+
+    #[ORM\ManyToOne(inversedBy: 'dataUserPaypals')]
+    private ?Manif $manif_id = null;
+
+    public function __construct()
+    {
+        $this->panierDetails = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -74,6 +87,48 @@ class DataUserPaypal
     public function setUserId(?User $user_id): self
     {
         $this->user_id = $user_id;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, PanierDetail>
+     */
+    public function getPanierDetails(): Collection
+    {
+        return $this->panierDetails;
+    }
+
+    public function addPanierDetail(PanierDetail $panierDetail): self
+    {
+        if (!$this->panierDetails->contains($panierDetail)) {
+            $this->panierDetails->add($panierDetail);
+            $panierDetail->setDataUserPaypal($this);
+        }
+
+        return $this;
+    }
+
+    public function removePanierDetail(PanierDetail $panierDetail): self
+    {
+        if ($this->panierDetails->removeElement($panierDetail)) {
+            // set the owning side to null (unless already changed)
+            if ($panierDetail->getDataUserPaypal() === $this) {
+                $panierDetail->setDataUserPaypal(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getManifId(): ?Manif
+    {
+        return $this->manif_id;
+    }
+
+    public function setManifId(?Manif $manif_id): self
+    {
+        $this->manif_id = $manif_id;
 
         return $this;
     }

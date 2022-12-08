@@ -5,14 +5,15 @@ namespace App\Controller;
 
 
 use App\Entity\DataUser;
-use App\Entity\User;
 use App\Form\DataUserType;
 use App\Repository\DataUserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Request as HttpFoundationRequest;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
+
 
 
 #[Route('/data/user')]
@@ -34,8 +35,18 @@ class DataUserController extends AbstractController
 
 
     #[Route('/new', name: 'app_data_user_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager) : Response
+    public function new(HttpFoundationRequest $request, EntityManagerInterface $entityManager) : Response
     {
+
+        $user = $this->getUser();
+        if ($user==null) {
+            return $this->redirectToRoute('app_login', ["panier"=>true]);
+        }
+        $panier = json_decode($request->cookies->get('panier'), true);
+        $total=0;
+        foreach ($panier as $article) {
+            $total+=$article['quantite']*$article['prix'];
+        }
         $dataUser = new DataUser();
         $form = $this->createForm(DataUserType::class, $dataUser);
         $form->handleRequest($request);
@@ -45,6 +56,7 @@ class DataUserController extends AbstractController
             $dataUser->setUser($user);
             $entityManager->persist($dataUser);
             $entityManager->flush();
+            return $this->redirectToRoute('app_panier_detail', [], Response::HTTP_SEE_OTHER);
 
         }
 

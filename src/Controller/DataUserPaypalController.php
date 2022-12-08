@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-
 use App\Entity\DataUserPaypal;
 use App\Form\DataUserPaypalType;
 use App\Repository\DataUserPaypalRepository;
@@ -11,6 +10,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request as HttpFoundationRequest;
+
 
 
 #[Route('/data/user/paypal')]
@@ -25,8 +26,19 @@ class DataUserPaypalController extends AbstractController
     }
 
     #[Route('/new', name: 'app_data_user_paypal_new', methods: ['GET', 'POST'])]
-    public function new( Request $request, EntityManagerInterface $entityManager): Response
+    public function new( HttpFoundationRequest $request, EntityManagerInterface $entityManager): Response
     {
+
+        $user = $this->getUser();
+        if ($user==null) {
+            return $this->redirectToRoute('app_login', ["panier"=>true]);
+        }
+        $panier = json_decode($request->cookies->get('panier'), true);
+        $total=0;
+        foreach ($panier as $article) {
+            $total+=$article['quantite']*$article['prix'];
+        }
+
         $dataUserPaypal = new DataUserPaypal();
         $form = $this->createForm(DataUserPaypalType::class, $dataUserPaypal);
         $form->handleRequest($request);
@@ -36,6 +48,7 @@ class DataUserPaypalController extends AbstractController
             $dataUserPaypal->setUserId($user_id);
             $entityManager->persist($dataUserPaypal);
             $entityManager->flush();
+            return $this->redirectToRoute('app_panier_detail', [], Response::HTTP_SEE_OTHER);
 
         }
 

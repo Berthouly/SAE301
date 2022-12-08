@@ -42,10 +42,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user_id', targetEntity: DataUserPaypal::class)]
     private Collection $dataUserPaypals;
 
+    #[ORM\OneToMany(mappedBy: 'user_id', targetEntity: PanierDetail::class)]
+    private Collection $panierDetails;
+
     public function __construct()
     {
         $this->dataUsers = new ArrayCollection();
         $this->dataUserPaypals = new ArrayCollection();
+        $this->panierDetails = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -185,6 +189,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($dataUserPaypal->getUserId() === $this) {
                 $dataUserPaypal->setUserId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, PanierDetail>
+     */
+    public function getPanierDetails(): Collection
+    {
+        return $this->panierDetails;
+    }
+
+    public function addPanierDetail(PanierDetail $panierDetail): self
+    {
+        if (!$this->panierDetails->contains($panierDetail)) {
+            $this->panierDetails->add($panierDetail);
+            $panierDetail->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removePanierDetail(PanierDetail $panierDetail): self
+    {
+        if ($this->panierDetails->removeElement($panierDetail)) {
+            // set the owning side to null (unless already changed)
+            if ($panierDetail->getUserId() === $this) {
+                $panierDetail->setUserId(null);
             }
         }
 

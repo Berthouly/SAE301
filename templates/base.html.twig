@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}SAE 301{% endblock %}</title>
+        <title>{% block title %}Le Pestacle {% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#E35A50;"/>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,20 +23,20 @@
                 <li><a href="{{ path('app_accueil') }}">ACCUEIL</a></li>
                 <li><a href="{{ path('app_salle_index') }}">SALLES</a></li>
                 <li><a href="{{ path('app_manif_index') }}">MANIFESTATIONS</a></li>
-                <li><a href="{{ path('app_panier') }}"><img src="{{ asset('img/panier1.png') }}" class="panier_img"><span id='panier'>0</span></a></li>
                 {% if app.user %}
-                    <li><a href="{{ path('app_user_index') }}"><img src="{{ asset('img/account1.png') }}" class="account_img"></a></li>
-                    <li><a href="{{ path('app_logout') }}">DECONNEXION</a></li>
+                    <li class="menu_panier"><a href="{{ path('app_panier') }}"><img src="{{ asset('img/panier1.png') }}" class="panier_img" alt="img_nav"><span id='panier'>0</span></a></li>
+                    <li class="menu_compte"><a href="{{ path('app_user_index') }}"><img src="{{ asset('img/account1.png') }}" class="account_img" alt="img_nav"></a></li>
+                    <li><a href="{{ path('app_logout') }}" >DECONNEXION</a></li>
                 {% else %}
-                    <li><a href="{{ path('app_login') }}"><img src="{{ asset('img/account1.png') }}" class="account_img"></a></li>
+                    <li class="menu_compte"><a href="{{ path('app_login') }}"><img src="{{ asset('img/account1.png') }}" class="account_img" alt="img_nav"></a></li>
 
                 {% endif %}
             </ul>
-            <a href="{{ path('app_accueil') }}"><img src="{{ asset('img/logo1.png') }}" class="logo_desktop"></a>
+            <a href="{{ path('app_accueil') }}"><img src="{{ asset('img/logo1.png') }}" class="logo_desktop" alt="img_nav"></a>
         </nav>
         </div>
         <div id="menu_phone">
-            <a href="{{ path('app_accueil') }}"><img src="{{ asset('img/logo1.png') }}" class="logo_phone"></a>
+            <a href="{{ path('app_accueil') }}"><img src="{{ asset('img/logo1.png') }}" class="logo_phone" alt="img_nav"></a>
         <input type="checkbox" id="ham-menu">
         <label for="ham-menu">
             <div class="hide-des">
@@ -56,12 +57,12 @@
                 <li><a href="{{ path('app_manif_index') }}">MANIFESTATION</a></li>
                 <li><a href="{{ path('app_panier') }}">PANIER</a></li>
                 {% if app.user %}
-                    <li><a href="#"></a>MON COMPTE</li>
+                    <li><a href="{{ path('app_user_index') }}">COMPTE</a></li>
                     <li><a href="{{ path('app_logout') }}">DECONNEXION</a></li>
                 {% else %}
                     <li><a href="{{ path('app_login') }}">CONNEXION</a></li>
                 {% endif %}
-                <li><a href=">admin">ADMIN</a></li>
+
             </ul>
         </div>
         </div>

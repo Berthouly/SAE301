@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\DataUserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: DataUserRepository::class)]
@@ -31,6 +33,16 @@ class DataUser
 
     #[ORM\ManyToOne(inversedBy: 'dataUsers')]
     private ?User $user = null;
+
+    #[ORM\OneToMany(mappedBy: 'data_user_CB', targetEntity: PanierDetail::class)]
+    private Collection $panierDetails;
+
+    public function __construct()
+    {
+        $this->panierDetails = new ArrayCollection();
+    }
+
+
 
 
     public function getId(): ?int
@@ -110,4 +122,36 @@ class DataUser
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, PanierDetail>
+     */
+    public function getPanierDetails(): Collection
+    {
+        return $this->panierDetails;
+    }
+
+    public function addPanierDetail(PanierDetail $panierDetail): self
+    {
+        if (!$this->panierDetails->contains($panierDetail)) {
+            $this->panierDetails->add($panierDetail);
+            $panierDetail->setDataUserCB($this);
+        }
+
+        return $this;
+    }
+
+    public function removePanierDetail(PanierDetail $panierDetail): self
+    {
+        if ($this->panierDetails->removeElement($panierDetail)) {
+            // set the owning side to null (unless already changed)
+            if ($panierDetail->getDataUserCB() === $this) {
+                $panierDetail->setDataUserCB(null);
+            }
+        }
+
+        return $this;
+    }
+
+
 }

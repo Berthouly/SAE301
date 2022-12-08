@@ -1,5 +1,4 @@
 {% extends 'base.html.twig' %}
-{% block title %}Manif index{% endblock %}
 
 {% block body %}
 {% block content %}
@@ -28,7 +27,7 @@
 
     </div>
      <section class="section_manifs">
-    <div id="card_container">
+         <div id="card_container">
         {% for manif in manifs %}
             <div class="event_card">
                 <a href="{{ manif.id }}">
@@ -40,7 +39,10 @@
                         <p class="prix_card">{{ manif.prix }}€</p>
                         <h4 class="synopsis_card">Synopsis</h4><br>
                         <p class="descript_card">{{ manif.descript }}</p>
+
                     </div>
+                    <h3 class="voir_info">Voir info</h3>
+
                 </div>
                 </a>
             </div>
