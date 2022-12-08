@@ -1,9 +1,4 @@
 {
-    "short_name": "Le Pestacle",
-
-    "id": "https://mmi21a02.sae301dev.ovh/accueil",
-    "start_url": "https://mmi21a02.sae301dev.ovh/accueil",
-    "theme_color": "#E35A50",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
